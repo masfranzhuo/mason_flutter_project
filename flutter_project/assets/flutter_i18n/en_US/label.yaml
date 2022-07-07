@@ -1,0 +1,14 @@
+title: "Flutter Demo"
+
+button:
+  loadMore: "Load More"
+
+pages:
+  home:
+    title: "Home Page"
+    increment: "Increment"
+    text: "You have pushed the button this many times:"
+  users:
+    title: "List of Users"
+  userDetail:
+    title: "User Detail"
