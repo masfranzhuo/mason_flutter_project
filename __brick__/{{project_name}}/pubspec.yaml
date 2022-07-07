@@ -1,0 +1,45 @@
+name: {{project_name.snakeCase()}}
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  dio: ^4.0.6
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.0.1
+  flutter_dotenv: ^5.0.2
+  flutter_i18n: ^0.32.2
+  flutter_screenutil: ^5.5.3+2
+  freezed_annotation: ^1.1.0
+  get_it: ^7.2.0
+  injectable: ^1.5.0
+  intl: ^0.17.0
+  json_annotation: ^4.5.0
+
+dev_dependencies:
+  bloc_test: ^9.0.3
+  build_runner: ^2.1.11
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+  freezed: ^1.1.0
+  injectable_generator: ^1.5.0
+  json_serializable: ^6.2.0
+  mockito: ^5.2.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - .env_dev
+    - .env_staging
+    - .env
+    - assets/flutter_i18n/en_US/
+    - assets/flutter_i18n/id_ID/

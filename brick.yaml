@@ -1,11 +1,19 @@
 name: mason_flutter_project
 description: Flutter project boilerplate
+repository: https://github.com/masfranzhuo/flutter_project
 
 version: 0.1.0+1
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"
 
-bricks:
-  flutter_project:
-    path: flutter_project
+vars:
+  project_name:
+    type: string
+    description: Name of your project
+    default: Flutter Project
+    prompt: Please enter the name of your project
+    
+# bricks:
+#   flutter_project:
+#     path: flutter_project
