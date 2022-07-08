@@ -1,9 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/config/date_config.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/date_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';

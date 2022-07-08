@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/data_sources/user_data_source.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/repositories/user_repository.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/src/repositories/user_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

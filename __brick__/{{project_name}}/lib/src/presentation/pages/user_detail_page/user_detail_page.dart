@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class UserDetailPage extends StatelessWidget {

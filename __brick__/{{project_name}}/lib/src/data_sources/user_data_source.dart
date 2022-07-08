@@ -1,7 +1,7 @@
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/http_client.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/entities/user.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/http_client.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class UserDataSource {

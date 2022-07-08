@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 
 abstract class UseCase<Type, Params> {
   const UseCase();

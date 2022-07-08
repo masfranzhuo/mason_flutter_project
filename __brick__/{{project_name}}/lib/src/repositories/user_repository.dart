@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/data_sources/user_data_source.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/entities/user.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class UserRepository {

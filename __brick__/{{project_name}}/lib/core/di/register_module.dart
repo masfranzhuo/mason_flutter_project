@@ -3,5 +3,10 @@ import 'package:injectable/injectable.dart';
 
 @module
 abstract class RegisterModule {
-  Dio get dio => Dio(BaseOptions(baseUrl: 'https://dummyapi.io/data/v1/'));
+  @Named('baseUrl')
+  String get baseUrl => 'https://dummyapi.io/data/v1/';
+
+  @lazySingleton
+  Dio dio(@Named('baseUrl') String baseUrl) =>
+      Dio(BaseOptions(baseUrl: baseUrl));
 }

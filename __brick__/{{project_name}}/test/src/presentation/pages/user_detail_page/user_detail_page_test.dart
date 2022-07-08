@@ -2,11 +2,11 @@ import 'dart:io';
 
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/pages/user_detail_page/user_detail_page.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/pages/user_detail_page/user_detail_page.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_detail_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';

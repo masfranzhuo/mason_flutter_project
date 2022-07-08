@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/widgets/user_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_card_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

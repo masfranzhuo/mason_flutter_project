@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/entities/user.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/use_cases/get_user.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
+import 'package:{{project_name.snakeCase()}}/src/use_cases/get_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

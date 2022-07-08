@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/data_sources/user_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/http_client.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/http_client.dart';
 
 import '../entities/entity_helpers.dart';
 import 'user_data_source_test.mocks.dart';

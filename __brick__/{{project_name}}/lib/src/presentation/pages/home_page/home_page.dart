@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/utils/environment.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
 import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
@@ -24,7 +24,7 @@ class _MyHomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Environment().config.appName +
+          GetIt.I<BaseConfig>().appName +
               ' - ' +
               GetIt.I<TranslatorService>().translate(
                 context,

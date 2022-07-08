@@ -1,8 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/src/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
 import 'package:mocktail/mocktail.dart';
 
 class FakeBuildContext extends Fake implements BuildContext {}
@@ -53,3 +54,10 @@ class MockUserDetailPageCubit extends MockCubit<UserDetailPageState>
     implements UserDetailPageCubit {}
 
 class FakeUserDetailPageState extends Fake implements UserDetailPageState {}
+
+// base config
+class MockBaseConfig extends Mock implements BaseConfig {
+  MockBaseConfig() {
+    when(() => appName).thenReturn('any string');
+  }
+}

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{project_name}}.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/pages/user_detail_page/user_detail_page.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/presentation/widgets/user_card_widget.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/pages/user_detail_page/user_detail_page.dart';
+import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 class UsersPage extends StatelessWidget {

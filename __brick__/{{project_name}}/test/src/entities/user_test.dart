@@ -1,4 +1,4 @@
-import 'package:{{project_name}}.snakeCase()}}/src/entities/user.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'entity_helpers.dart';

@@ -1,5 +1,5 @@
-import 'package:{{project_name}}.snakeCase()}}/core/config/date_config.dart';
-import 'package:{{project_name}}.snakeCase()}}/src/entities/location.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/date_config.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/location.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';

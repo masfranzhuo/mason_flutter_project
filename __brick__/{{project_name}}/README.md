@@ -1,7 +1,7 @@
-![Test](https://github.com/masfranzhuo/flutter_project/workflows/Test/badge.svg)
-[![codecov](https://codecov.io/gh/masfranzhuo/flutter_project/branch/development/graph/badge.svg?token=ED78PFGNFG)](https://codecov.io/gh/masfranzhuo/flutter_project)
+![Test](https://github.com/masfranzhuo/{{project_name.snakeCase()}}/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/masfranzhuo/{{project_name.snakeCase()}}/branch/development/graph/badge.svg?token=ED78PFGNFG)](https://codecov.io/gh/masfranzhuo/{{project_name.snakeCase()}})
 
-# flutter_project
+# {{project_name.snakeCase()}}
 
 A new Flutter project architecture.
 
@@ -14,8 +14,15 @@ Run this command
 > flutter pub run build_runner build
 ```
 
-Create `.env`, `.env_staging`, `.env_development` file on root folder
+Create `.env` and `.env_dev` file on root folder
 ```
 ENV = DEVELOPMENT
 APP_ID = XXXXXX // get API key at https://dummyapi.io
 ```
+
+### Features
+- Clean Architecture
+- Environment
+- Localization
+- Responsive
+- Http Service

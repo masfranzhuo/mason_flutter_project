@@ -1,16 +1,15 @@
+import 'package:injectable/injectable.dart';
+
 abstract class BaseConfig {
   String get appName;
-  String get baseUrl;
   String get envFileName;
   bool get showDebugInfo;
 }
 
-class DevelopmentConfig implements BaseConfig {
+@Injectable(as: BaseConfig, env: [Environment.dev])
+class DevConfig implements BaseConfig {
   @override
-  String get appName => 'Flutter Demo Development';
-
-  @override
-  String get baseUrl => 'https://dummyapi.io/data/v1/';
+  String get appName => 'Flutter Demo Dev';
 
   @override
   String get envFileName => '.env_dev';
@@ -19,26 +18,10 @@ class DevelopmentConfig implements BaseConfig {
   bool get showDebugInfo => true;
 }
 
-class StagingConfig implements BaseConfig {
+@Injectable(as: BaseConfig, env: [Environment.prod])
+class ProdConfig implements BaseConfig {
   @override
-  String get appName => 'Flutter Demo Staging';
-
-  @override
-  String get baseUrl => 'https://dummyapi.io/data/v1/';
-
-  @override
-  String get envFileName => '.env_staging';
-
-  @override
-  bool get showDebugInfo => true;
-}
-
-class ProductionConfig implements BaseConfig {
-  @override
-  String get appName => 'Flutter Demo Production';
-
-  @override
-  String get baseUrl => 'https://dummyapi.io/data/v1/';
+  String get appName => 'Flutter Demo Prod';
 
   @override
   String get envFileName => '.env';
