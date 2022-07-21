@@ -93,7 +93,7 @@ void main() {
       final button = find.byType(IconButton);
       await tester.tap(button);
 
-      verify(() => mockOnTap(any()));
+      verify(() => mockOnTap(any())).called(1);
     },
   );
 }

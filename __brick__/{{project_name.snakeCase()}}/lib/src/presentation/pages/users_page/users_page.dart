@@ -70,9 +70,7 @@ class UsersPage extends StatelessWidget {
                   user: user,
                   onTap: (context) {
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => UserDetailPage(
-                        id: user.id,
-                      ),
+                      builder: (context) => UserDetailPage(id: user.id),
                     ));
                   },
                 );
@@ -83,9 +81,7 @@ class UsersPage extends StatelessWidget {
               child: state.isLoading
                   ? const Center(child: CircularProgressIndicator())
                   : ElevatedButton(
-                      onPressed: () {
-                        GetIt.I<UsersPageCubit>().getUsers();
-                      },
+                      onPressed: () => GetIt.I<UsersPageCubit>().getUsers(),
                       child: Text(
                         GetIt.I<TranslatorService>().translate(
                           context,

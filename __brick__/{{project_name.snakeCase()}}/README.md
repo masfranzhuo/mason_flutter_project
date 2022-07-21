@@ -1,7 +1,7 @@
-![Test](https://github.com/masfranzhuo/{{project_name.snakeCase()}}/workflows/Test/badge.svg)
-[![codecov](https://codecov.io/gh/masfranzhuo/{{project_name.snakeCase()}}/branch/development/graph/badge.svg?token=ED78PFGNFG)](https://codecov.io/gh/masfranzhuo/{{project_name.snakeCase()}})
+![Test](https://github.com/masfranzhuo/flutter_project/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/masfranzhuo/flutter_project/branch/development/graph/badge.svg?token=ED78PFGNFG)](https://codecov.io/gh/masfranzhuo/flutter_project)
 
-# {{project_name.snakeCase()}}
+# flutter_project
 
 A new Flutter project architecture.
 
@@ -25,4 +25,5 @@ APP_ID = XXXXXX // get API key at https://dummyapi.io
 - Environment
 - Localization
 - Responsive
-- Http Service
+- Dio as Http Service
+- Hive and sqflite as Local Storage

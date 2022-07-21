@@ -111,7 +111,6 @@ void main() {
       whenListen(
         mockUsersPageCubit,
         Stream.fromIterable([
-          UsersPageState(),
           UsersPageState(users: users),
         ]),
       );
@@ -121,7 +120,7 @@ void main() {
       final button = find.byType(ElevatedButton);
       await tester.tap(button);
 
-      verify(() => mockUsersPageCubit.getUsers());
+      verify(() => mockUsersPageCubit.getUsers()).called(2);
     },
   );
 
@@ -134,7 +133,6 @@ void main() {
       whenListen(
         mockUsersPageCubit,
         Stream.fromIterable([
-          UsersPageState(),
           UsersPageState(
             failure: const UnexpectedFailure(
               code: 'NO_DATA_FAILURE',
@@ -147,7 +145,8 @@ void main() {
       await _setUpEnvironment(tester);
 
       verify(() =>
-          mockTranslatorService.translate(any(), 'error.NO_DATA_FAILURE'));
+              mockTranslatorService.translate(any(), 'error.NO_DATA_FAILURE'))
+          .called(1);
     },
   );
 
@@ -182,28 +181,27 @@ void main() {
       // finish the indicator hide animation
       await tester.pump(const Duration(seconds: 1));
 
-      verify(() => mockUsersPageCubit.getUsers(isReload: true));
+      verify(() => mockUsersPageCubit.getUsers(isReload: true)).called(1);
 
       handle.dispose();
     },
   );
 
   testWidgets(
-    'should navigate to UserDetailPage, when tap at IconButton',
+    'should verify navigate to UserDetailPage, when tap at IconButton',
     (WidgetTester tester) async {
       final MockUserDetailPageCubit mockUserDetailPageCubit =
           MockUserDetailPageCubit();
       GetIt.I.registerLazySingleton<UserDetailPageCubit>(
         () => mockUserDetailPageCubit,
       );
-
-      when(() => mockUsersPageCubit.state).thenReturn(
-        UsersPageState(users: users),
-      );
       when(() => mockUserDetailPageCubit.state).thenReturn(
         UserDetailPageState(user: user),
       );
 
+      when(() => mockUsersPageCubit.state).thenReturn(
+        UsersPageState(users: users),
+      );
       await _setUpEnvironment(tester);
 
       final tapable = find.byKey(
@@ -212,9 +210,9 @@ void main() {
       await tester.tap(tapable);
       await tester.pumpAndSettle();
 
-      verify(() => mockObserver.didPush(any(), any()));
       expect(find.byType(UsersPage), findsNothing);
       expect(find.byType(UserDetailPage), findsOneWidget);
+      verify(() => mockObserver.didPush(any(), any()));
     },
   );
 }

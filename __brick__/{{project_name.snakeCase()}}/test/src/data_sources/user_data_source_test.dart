@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,6 +14,10 @@ import 'user_data_source_test.mocks.dart';
 void main() {
   late UserDataSourceImpl dataSource;
   late MockHttpClientService mockHttpClientService;
+
+  setUpAll(() {
+    dotenv.testLoad(fileInput: 'APP_ID = APP_ID');
+  });
 
   setUp(() {
     mockHttpClientService = MockHttpClientService();

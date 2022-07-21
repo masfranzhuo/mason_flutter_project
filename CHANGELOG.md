@@ -7,3 +7,6 @@
 
 # 0.1.1+3
 - update: project name use snake case
+
+# 0.1.2+4
+- new: hive and sqflite as local storage

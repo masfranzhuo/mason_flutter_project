@@ -7,5 +7,5 @@ import 'package:{{project_name.snakeCase()}}/core/di/injector.config.dart';
   preferRelativeImports: true,
   asExtension: false,
 )
-void configureDependencies(String env) =>
-    $initGetIt(GetIt.instance, environment: env);
+Future<void> configureDependencies(String env) async =>
+    await $initGetIt(GetIt.instance, environment: env);

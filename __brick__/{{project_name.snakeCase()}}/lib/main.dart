@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/loaders/decoders/yaml_decode_strategy.dart';
 import 'package:flutter_i18n/loaders/namespace_file_translation_loader.dart';
@@ -9,11 +8,14 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/env_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/presentation/pages/main_page.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  configureDependencies(EnvConfig.environment);
+  await Hive.initFlutter();
+  await Hive.openBox('box');
+  await configureDependencies(EnvConfig.environment);
   await dotenv.load(fileName: GetIt.I<BaseConfig>().envFileName);
 
   final FlutterI18nDelegate flutterI18nDelegate = FlutterI18nDelegate(
@@ -26,9 +28,9 @@ Future<void> main() async {
       decodeStrategies: [YamlDecodeStrategy()],
     ),
     missingTranslationHandler: (key, locale) {
-      if (kDebugMode) {
-        print("--- Missing Key: $key, languageCode: ${locale?.languageCode}");
-      }
+      debugPrint(
+        '--- Missing Key: $key, languageCode: ${locale?.languageCode}',
+      );
     },
   );
 

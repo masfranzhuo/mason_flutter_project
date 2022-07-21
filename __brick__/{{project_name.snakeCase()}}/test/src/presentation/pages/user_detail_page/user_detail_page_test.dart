@@ -91,7 +91,7 @@ void main() {
         findsOneWidget,
       );
 
-      verify(() => mockUserDetailPageCubit.getUser(id: user.id));
+      verify(() => mockUserDetailPageCubit.getUser(id: user.id)).called(1);
     },
   );
 
@@ -104,7 +104,6 @@ void main() {
       whenListen(
         mockUserDetailPageCubit,
         Stream.fromIterable([
-          UserDetailPageState(user: user),
           UserDetailPageState(
             failure: const UnexpectedFailure(message: 'any message'),
           ),
