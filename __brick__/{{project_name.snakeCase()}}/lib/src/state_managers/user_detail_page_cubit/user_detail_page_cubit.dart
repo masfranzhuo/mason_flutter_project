@@ -19,7 +19,7 @@ class UserDetailPageCubit extends Cubit<UserDetailPageState> {
   void getUser({required String id}) async {
     emit(UserDetailPageState().copyWith(isLoading: true));
 
-    final result = await _getUser(id);
+    final result = await _getUser(id: id);
 
     result.fold(
       (failure) => emit(state.copyWith(failure: failure, isLoading: false)),

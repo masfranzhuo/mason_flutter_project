@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class UserDataSource {
   Future<List<User>> getUsers({
-    required int pages,
+    required int page,
     int limit = Pagination.limit,
   });
   Future<User> getUser({required String id});
@@ -21,13 +21,13 @@ class UserDataSourceImpl extends UserDataSource {
 
   @override
   Future<List<User>> getUsers({
-    required int pages,
+    required int page,
     int limit = Pagination.limit,
   }) async {
     try {
       final result = await client.get(
         path: 'user',
-        queryParameters: {'limit': limit, 'page': pages},
+        queryParameters: {'limit': limit, 'page': page},
         options: Options(
           headers: <String, dynamic>{'app-id': dotenv.env['APP_ID']},
         ),

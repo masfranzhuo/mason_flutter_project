@@ -32,7 +32,7 @@ void main() {
       )).thenThrow(Exception());
 
       expect(
-        () async => await dataSource.getUsers(pages: 1, limit: 10),
+        () async => await dataSource.getUsers(page: 1, limit: 10),
         throwsA(isA<Exception>()),
       );
     });
@@ -48,7 +48,7 @@ void main() {
         options: anyNamed('options'),
       )).thenAnswer((_) async => response);
 
-      final result = await dataSource.getUsers(pages: 1, limit: 10);
+      final result = await dataSource.getUsers(page: 1, limit: 10);
 
       expect(result, users);
 

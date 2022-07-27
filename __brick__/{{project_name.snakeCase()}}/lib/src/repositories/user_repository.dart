@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 
 abstract class UserRepository {
   Future<Either<Failure, List<User>>> getUsers({
-    required int pages,
+    required int page,
     int limit = Pagination.limit,
   });
   Future<Either<Failure, User>> getUser({required String id});
@@ -21,11 +21,11 @@ class UserRepositoryImpl extends UserRepository {
 
   @override
   Future<Either<Failure, List<User>>> getUsers({
-    required int pages,
+    required int page,
     int limit = Pagination.limit,
   }) async {
     try {
-      final result = await dataSource.getUsers(pages: pages, limit: limit);
+      final result = await dataSource.getUsers(page: page, limit: limit);
 
       return Right(result);
     } on Failure catch (failure) {

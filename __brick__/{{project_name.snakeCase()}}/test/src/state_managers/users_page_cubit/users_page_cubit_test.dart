@@ -25,7 +25,10 @@ void main() {
     blocTest(
       'should emit failure, when return error',
       build: () {
-        when(mockGetUsers(any)).thenAnswer(
+        when(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).thenAnswer(
           (_) async => const Left(UnexpectedFailure()),
         );
         return cubit;
@@ -39,13 +42,19 @@ void main() {
         ),
       ],
       verify: (_) async {
-        verify(mockGetUsers(any));
+        verify(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        ));
       },
     );
     blocTest(
       'should emit failure code = NO_DATA_FAILURE, when return empty users',
       build: () {
-        when(mockGetUsers(any)).thenAnswer(
+        when(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).thenAnswer(
           (_) async => const Right(<User>[]),
         );
         return cubit;
@@ -62,13 +71,19 @@ void main() {
         ),
       ],
       verify: (_) async {
-        verify(mockGetUsers(any));
+        verify(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        ));
       },
     );
     blocTest(
-      'should emit users and pages = 1, when get users for the first time',
+      'should emit users and page = 1, when get users for the first time',
       build: () {
-        when(mockGetUsers(any)).thenAnswer(
+        when(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).thenAnswer(
           (_) async => Right(users),
         );
         return cubit;
@@ -78,18 +93,24 @@ void main() {
         UsersPageState(isLoading: true),
         UsersPageState(
           isLoading: false,
-          pages: 1,
+          page: 1,
           users: users,
         ),
       ],
       verify: (_) async {
-        verify(mockGetUsers(any));
+        verify(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        ));
       },
     );
     blocTest(
-      'should emit users and pages = 2, when load more users',
+      'should emit users and page = 2, when load more users',
       build: () {
-        when(mockGetUsers(any)).thenAnswer(
+        when(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).thenAnswer(
           (_) async => Right(users),
         );
         return cubit;
@@ -101,18 +122,24 @@ void main() {
       expect: () => [
         UsersPageState(
           isLoading: false,
-          pages: 2,
+          page: 2,
           users: [...users, ...users],
         ),
       ],
       verify: (_) async {
-        verify(mockGetUsers(any)).called(2);
+        verify(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).called(2);
       },
     );
     blocTest(
-      'should emit users and pages = 1, when isReload is true',
+      'should emit users and page = 1, when isReload is true',
       build: () {
-        when(mockGetUsers(any)).thenAnswer(
+        when(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        )).thenAnswer(
           (_) async => Right(users),
         );
         return cubit;
@@ -120,19 +147,22 @@ void main() {
       act: (_) async => cubit.getUsers(isReload: true),
       seed: () => UsersPageState(
         isLoading: false,
-        pages: 1,
+        page: 1,
         users: users,
       ),
       expect: () => [
         UsersPageState(isLoading: true),
         UsersPageState(
           isLoading: false,
-          pages: 1,
+          page: 1,
           users: users,
         ),
       ],
       verify: (_) async {
-        verify(mockGetUsers(any));
+        verify(mockGetUsers(
+          page: anyNamed('page'),
+          limit: anyNamed('limit'),
+        ));
       },
     );
   });

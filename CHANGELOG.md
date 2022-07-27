@@ -14,3 +14,6 @@
 # 0.1.3+5
 - new: device preview to preview from any device
 - update: upgrade flutter sdk 2.10.5 to 3.0.5
+
+# 0.1.4
+- update: remove use case util and minor fix

@@ -25,7 +25,7 @@ void main() {
       (_) async => Right(user),
     );
 
-    final result = await getUser('anyId');
+    final result = await getUser(id: 'anyId');
 
     expect((result as Right).value, user);
 

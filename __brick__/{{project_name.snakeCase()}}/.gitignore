@@ -53,5 +53,5 @@ app.*.map.json
 **.config.dart**
 **.injectable.dart**
 coverage/
-.fvm
-.vscode
+.fvm/
+.vscode/

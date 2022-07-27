@@ -12,7 +12,6 @@ dependencies:
   dartz: ^0.10.1
   device_preview: ^1.1.0
   dio: ^4.0.6
-  equatable: ^2.0.3
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1

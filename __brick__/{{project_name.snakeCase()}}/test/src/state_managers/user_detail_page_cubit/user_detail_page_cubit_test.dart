@@ -24,7 +24,7 @@ void main() {
     blocTest(
       'should emit failure, when return error',
       build: () {
-        when(mockGetUser(any)).thenAnswer(
+        when(mockGetUser(id: anyNamed('id'))).thenAnswer(
           (_) async => const Left(UnexpectedFailure()),
         );
         return cubit;
@@ -38,13 +38,13 @@ void main() {
         ),
       ],
       verify: (_) async {
-        verify(mockGetUser(any));
+        verify(mockGetUser(id: anyNamed('id')));
       },
     );
     blocTest(
       'should emit user, when successfully get user',
       build: () {
-        when(mockGetUser(any)).thenAnswer(
+        when(mockGetUser(id: anyNamed('id'))).thenAnswer(
           (_) async => Right(user),
         );
         return cubit;
@@ -55,7 +55,7 @@ void main() {
         UserDetailPageState(isLoading: false, user: user),
       ],
       verify: (_) async {
-        verify(mockGetUser(any));
+        verify(mockGetUser(id: anyNamed('id')));
       },
     );
   });

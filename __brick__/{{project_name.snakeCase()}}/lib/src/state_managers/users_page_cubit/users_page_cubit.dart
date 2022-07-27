@@ -20,11 +20,11 @@ class UsersPageCubit extends Cubit<UsersPageState> {
     emit(state.copyWith(
       isLoading: true,
       failure: null,
-      pages: isReload ? 0 : state.pages,
+      page: isReload ? 0 : state.page,
       users: isReload ? [] : state.users,
     ));
 
-    final result = await _getUsers(Params(pages: state.pages));
+    final result = await _getUsers(page: state.page);
 
     result.fold(
       (failure) => emit(state.copyWith(
@@ -44,7 +44,7 @@ class UsersPageCubit extends Cubit<UsersPageState> {
         }
         emit(state.copyWith(
           isLoading: false,
-          pages: state.pages + 1,
+          page: state.page + 1,
           users: [...state.users, ...users],
         ));
       },
@@ -59,6 +59,6 @@ class UsersPageState with _$UsersPageState {
     Failure? failure,
     @Default(false) bool isLoading,
     @Default([]) List<User> users,
-    @Default(0) int pages,
+    @Default(0) int page,
   }) = _UsersPageState;
 }

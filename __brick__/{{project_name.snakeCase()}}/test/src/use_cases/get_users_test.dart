@@ -20,16 +20,16 @@ void main() {
 
   test('should return list of users', () async {
     when(mockUserRepository.getUsers(
-      pages: anyNamed('pages'),
+      page: anyNamed('page'),
       limit: anyNamed('limit'),
     )).thenAnswer(
       (_) async => Right(users),
     );
 
-    final result = await getUsers(const Params(pages: 1, limit: 10));
+    final result = await getUsers(page: 1, limit: 10);
 
     expect((result as Right).value, users);
 
-    verify(mockUserRepository.getUsers(pages: 1, limit: 10));
+    verify(mockUserRepository.getUsers(page: 1, limit: 10));
   });
 }
