@@ -47,13 +47,13 @@ class UserDetailCardWidget extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(16.r, 8.r, 16.r, 0),
               child: Text(
-                '${GetIt.I<TranslatorService>().translate(context, 'model.user.dateOfBirth')}: ${DateConfig.dateFormat.format(user.dateOfBirth!)},',
+                '${GetIt.I<TranslatorService>().translate(context, 'model.user.dateOfBirth')}: ${DateConfig.dateFormat(user.dateOfBirth!)},',
               ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(16.r, 8.r, 16.r, 0),
               child: Text(
-                '${GetIt.I<TranslatorService>().translate(context, 'model.user.joinFrom')}: ${DateConfig.dateFormat.format(user.registerDate!)},',
+                '${GetIt.I<TranslatorService>().translate(context, 'model.user.joinFrom')}: ${DateConfig.dateFormat(user.registerDate!)},',
               ),
             ),
             Padding(

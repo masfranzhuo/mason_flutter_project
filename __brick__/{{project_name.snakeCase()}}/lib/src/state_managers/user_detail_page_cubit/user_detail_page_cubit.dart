@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:{{project_name.snakeCase()}}/src/use_cases/get_user.dart';

@@ -7,6 +7,7 @@ import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_detai
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../mock_helpers.dart';
@@ -17,6 +18,7 @@ void main() {
 
   setUpAll(() {
     HttpOverrides.global = null;
+    initializeDateFormatting('en_US');
   });
 
   setUp(() {
@@ -139,8 +141,9 @@ void main() {
             w is Column &&
             w.children[5] is Padding &&
             (w.children[5] as Padding).child is Text &&
-            ((w.children[5] as Padding).child as Text).data!.contains(
-                ': ${DateConfig.dateFormat.format(user.dateOfBirth!)}')),
+            ((w.children[5] as Padding).child as Text)
+                .data!
+                .contains(': ${DateConfig.dateFormat(user.dateOfBirth!)}')),
         findsOneWidget,
       );
 
@@ -149,8 +152,9 @@ void main() {
             w is Column &&
             w.children[6] is Padding &&
             (w.children[6] as Padding).child is Text &&
-            ((w.children[6] as Padding).child as Text).data!.contains(
-                ': ${DateConfig.dateFormat.format(user.registerDate!)}')),
+            ((w.children[6] as Padding).child as Text)
+                .data!
+                .contains(': ${DateConfig.dateFormat(user.registerDate!)}')),
         findsOneWidget,
       );
 

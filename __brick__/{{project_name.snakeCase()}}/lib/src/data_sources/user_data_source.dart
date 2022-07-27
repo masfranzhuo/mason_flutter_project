@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/http_client.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
@@ -40,7 +39,7 @@ class UserDataSourceImpl extends UserDataSource {
           .map((item) => User.fromJson(Map<String, dynamic>.from(item)))
           .toList();
     } on Exception catch (e) {
-      throw UnexpectedFailure(message: e.toString());
+      throw Exception(e.toString());
     }
   }
 
@@ -56,7 +55,7 @@ class UserDataSourceImpl extends UserDataSource {
 
       return User.fromJson(result.data as Map<String, dynamic>);
     } on Exception catch (e) {
-      throw UnexpectedFailure(message: e.toString());
+      throw Exception(e.toString());
     }
   }
 }

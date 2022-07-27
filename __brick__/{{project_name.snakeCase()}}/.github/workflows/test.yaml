@@ -8,10 +8,12 @@ jobs:
   test:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '2.10.5'
+          flutter-version: '3.0.5'
+          channel: 'stable'
+          architecture: x64
       - run: touch .env
       - run: touch .env_dev
       - run: flutter pub get

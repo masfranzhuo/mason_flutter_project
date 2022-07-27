@@ -24,12 +24,10 @@ class _MyHomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          GetIt.I<BaseConfig>().appName +
-              ' - ' +
-              GetIt.I<TranslatorService>().translate(
-                context,
-                'label.pages.home.title',
-              ),
+          '${GetIt.I<BaseConfig>().appName} - ${GetIt.I<TranslatorService>().translate(
+            context,
+            'label.pages.home.title',
+          )}',
         ),
       ),
       body: Center(

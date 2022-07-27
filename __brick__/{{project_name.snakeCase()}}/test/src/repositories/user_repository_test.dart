@@ -20,11 +20,24 @@ void main() {
   });
 
   group('getUsers', () {
-    test('should return UnexpectedFailure()', () async {
+    test('should return UnexpectedFailure(), when throw exception', () async {
       when(mockUserDataSource.getUsers(
         pages: anyNamed('pages'),
         limit: anyNamed('limit'),
       )).thenThrow(Exception());
+
+      final result = await repository.getUsers(pages: 1, limit: 10);
+
+      expect((result as Left).value, isA<UnexpectedFailure>());
+
+      verify(mockUserDataSource.getUsers(pages: 1, limit: 10));
+    });
+
+    test('should return UnexpectedFailure(), when throw failure', () async {
+      when(mockUserDataSource.getUsers(
+        pages: anyNamed('pages'),
+        limit: anyNamed('limit'),
+      )).thenThrow(const UnexpectedFailure());
 
       final result = await repository.getUsers(pages: 1, limit: 10);
 
@@ -48,10 +61,22 @@ void main() {
   });
 
   group('getUser', () {
-    test('should return UnexpectedFailure()', () async {
+    test('should return UnexpectedFailure(), when throw exception', () async {
       when(mockUserDataSource.getUser(
         id: anyNamed('id'),
       )).thenThrow(Exception());
+
+      final result = await repository.getUser(id: 'anyId');
+
+      expect((result as Left).value, isA<UnexpectedFailure>());
+
+      verify(mockUserDataSource.getUser(id: 'anyId'));
+    });
+
+    test('should return UnexpectedFailure(), when throw failure', () async {
+      when(mockUserDataSource.getUser(
+        id: anyNamed('id'),
+      )).thenThrow(const UnexpectedFailure());
 
       final result = await repository.getUser(id: 'anyId');
 

@@ -28,6 +28,8 @@ class UserRepositoryImpl extends UserRepository {
       final result = await dataSource.getUsers(pages: pages, limit: limit);
 
       return Right(result);
+    } on Failure catch (failure) {
+      return Left(failure);
     } on Exception catch (e) {
       return Left(UnexpectedFailure(message: e.toString()));
     }
@@ -39,6 +41,8 @@ class UserRepositoryImpl extends UserRepository {
       final result = await dataSource.getUser(id: id);
 
       return Right(result);
+    } on Failure catch (failure) {
+      return Left(failure);
     } on Exception catch (e) {
       return Left(UnexpectedFailure(message: e.toString()));
     }

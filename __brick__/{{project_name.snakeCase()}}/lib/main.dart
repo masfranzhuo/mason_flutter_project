@@ -1,3 +1,4 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/loaders/decoders/yaml_decode_strategy.dart';
 import 'package:flutter_i18n/loaders/namespace_file_translation_loader.dart';
@@ -34,5 +35,12 @@ Future<void> main() async {
     },
   );
 
-  runApp(MainPage(flutterI18nDelegate: flutterI18nDelegate));
+  /// TODO: Form Field Failure
+  /// TODO: Drift local storage or cache
+  runApp(
+    DevicePreview(
+      enabled: GetIt.I<BaseConfig>().showDebugInfo,
+      builder: (context) => MainPage(flutterI18nDelegate: flutterI18nDelegate),
+    ),
+  );
 }

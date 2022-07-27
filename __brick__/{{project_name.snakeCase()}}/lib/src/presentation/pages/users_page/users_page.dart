@@ -55,12 +55,7 @@ class UsersPage extends StatelessWidget {
         return ListView(
           physics: const AlwaysScrollableScrollPhysics(),
           children: [
-            GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: MediaQuery.of(context).size.width > 720 ? 2 : 1,
-                childAspectRatio: MediaQuery.of(context).size.width /
-                    (MediaQuery.of(context).size.width > 720 ? 150 : 75),
-              ),
+            ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: state.users.length,
