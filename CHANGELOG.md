@@ -17,3 +17,6 @@
 
 # 0.1.4
 - update: remove use case util and minor fix
+
+# 0.1.5
+- new: no internet connection handling

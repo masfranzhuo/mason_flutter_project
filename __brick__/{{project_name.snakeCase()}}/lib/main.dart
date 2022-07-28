@@ -35,9 +35,6 @@ Future<void> main() async {
     },
   );
 
-  /// TODO: Form Field Failure
-  /// TODO: Drift local storage or cache
-  /// TODO: fvm use stable --verbose
   runApp(
     DevicePreview(
       enabled: GetIt.I<BaseConfig>().showDebugInfo,

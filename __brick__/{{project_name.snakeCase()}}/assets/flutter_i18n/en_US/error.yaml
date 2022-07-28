@@ -1,2 +1,3 @@
 NO_DATA_FAILURE: 'No more data available'
 UNEXPECTED_ERROR: 'Unexpected error'
+INTERNET_CONNECTION_ERROR: 'No internet connection'

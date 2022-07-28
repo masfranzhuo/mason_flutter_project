@@ -1,2 +1,3 @@
 NO_DATA_FAILURE: 'Tidak ada data yang tersedia'
 UNEXPECTED_ERROR: 'Terjadi Kesalahan pada aplikasi'
+INTERNET_CONNECTION_ERROR: 'Tidak ada koneksi internet'

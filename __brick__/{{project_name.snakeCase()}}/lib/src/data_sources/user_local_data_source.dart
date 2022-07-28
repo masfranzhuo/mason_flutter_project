@@ -12,7 +12,7 @@ abstract class UserLocalDataSource {
 }
 
 @LazySingleton(as: UserLocalDataSource)
-class UserLocalDataSourceImpl extends UserLocalDataSource {
+class UserLocalDataSourceImpl implements UserLocalDataSource {
   final SqfliteService sqfliteService;
   final String _table = 'User';
   final List<String> _column = [

@@ -14,7 +14,7 @@ abstract class UserRepository {
 }
 
 @LazySingleton(as: UserRepository)
-class UserRepositoryImpl extends UserRepository {
+class UserRepositoryImpl implements UserRepository {
   final UserDataSource dataSource;
 
   UserRepositoryImpl({required this.dataSource});
