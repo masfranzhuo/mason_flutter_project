@@ -19,6 +19,13 @@ class InternetConnectionFailure extends Failure {
   }) : super(message: message, code: code);
 }
 
+class LocalStorageFailure extends Failure {
+  const LocalStorageFailure({
+    String message = '',
+    String code = 'LOCAL_STORAGE_ERROR',
+  }) : super(message: message, code: code);
+}
+
 class FormFieldFailure extends Failure {
   const FormFieldFailure({
     required String type,

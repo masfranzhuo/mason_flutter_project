@@ -2,7 +2,7 @@ name: mason_flutter_project
 description: Flutter project boilerplate
 repository: https://github.com/masfranzhuo/mason_flutter_project
 
-version: 0.1.5
+version: 0.1.6
 
 environment:
   mason: ">=0.1.0-dev.26 <0.1.0"

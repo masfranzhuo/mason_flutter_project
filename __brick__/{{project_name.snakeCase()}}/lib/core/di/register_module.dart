@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/location_isar.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user_isar.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
+import 'package:path_provider/path_provider.dart';
 
 @module
 abstract class RegisterModule {
@@ -13,7 +17,15 @@ abstract class RegisterModule {
   @preResolve
   Future<Box<dynamic>> get hive async => Hive.box('box');
 
-  // TODO: sqflite only works for mobile device || refactor Sqflite
+  @preResolve
+  Future<Isar> get isar async => await Isar.open(
+        [LocationIsarSchema, UserIsarSchema],
+        directory: (await getApplicationSupportDirectory()).path,
+        inspector: true,
+      );
+
+  /// sqflite only works for mobile device currently
+  ///
   // @preResolve
   // Future<Database> get database async => await openDatabase(
   //       join(await getDatabasesPath(), 'database.db'),

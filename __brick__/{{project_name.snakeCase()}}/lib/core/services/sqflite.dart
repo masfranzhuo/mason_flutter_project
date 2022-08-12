@@ -26,6 +26,8 @@ abstract class SqfliteService {
     required List<String> columns,
     String? queryColumn,
     String? query,
+    int? limit,
+    int? offset,
   });
 }
 
@@ -40,7 +42,11 @@ class SqfliteServiceImpl implements SqfliteService {
     required String table,
     required Map<String, Object?> map,
   }) async {
-    return await database.insert(table, map);
+    return await database.insert(
+      table,
+      map,
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   @override
@@ -50,7 +56,11 @@ class SqfliteServiceImpl implements SqfliteService {
   }) async {
     List<int> ids = [];
     await Future.forEach(maps, (Map<String, Object?> map) async {
-      final id = await database.insert(table, map);
+      final id = await database.insert(
+        table,
+        map,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
       ids.add(id);
     });
 
@@ -101,6 +111,8 @@ class SqfliteServiceImpl implements SqfliteService {
     required List<String> columns,
     String? queryColumn,
     String? query,
+    int? limit,
+    int? offset,
   }) async {
     List<Map<String, Object?>> result;
     if ((queryColumn != null && queryColumn != '') &&
@@ -110,9 +122,16 @@ class SqfliteServiceImpl implements SqfliteService {
         columns: columns,
         where: '$queryColumn = ?',
         whereArgs: ['%$query%'],
+        limit: limit,
+        offset: offset,
       );
     } else {
-      result = await database.query(table, columns: columns);
+      result = await database.query(
+        table,
+        columns: columns,
+        limit: limit,
+        offset: offset,
+      );
     }
     return result.isNotEmpty ? result : [];
   }

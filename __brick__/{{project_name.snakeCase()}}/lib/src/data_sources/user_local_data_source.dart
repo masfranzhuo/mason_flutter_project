@@ -1,11 +1,15 @@
-import 'package:{{project_name.snakeCase()}}/core/services/sqflite.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/location_isar.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
+import 'package:{{project_name.snakeCase()}}/src/entities/user_isar.dart';
 import 'package:injectable/injectable.dart';
+import 'package:isar/isar.dart';
 
 abstract class UserLocalDataSource {
   Future<void> setUsers({required List<User> users});
   Future<void> setUser({required User user});
-  Future<List<User>> getUsers();
+  Future<List<User>> getUsers({int? page, int limit = Pagination.limit});
   Future<User> getUser({required String id});
   Future<void> deleteUser({required String id});
   Future<void> deleteAllUser();
@@ -13,72 +17,103 @@ abstract class UserLocalDataSource {
 
 @LazySingleton(as: UserLocalDataSource)
 class UserLocalDataSourceImpl implements UserLocalDataSource {
-  final SqfliteService sqfliteService;
-  final String _table = 'User';
-  final List<String> _column = [
-    'id',
-    'title',
-    'firstName',
-    'lastName',
-    'picture',
-    'gender',
-    'email',
-    'phone',
-    'dateOfBirth',
-    'registerDate',
-    'location',
-  ];
+  final Isar isar;
 
-  UserLocalDataSourceImpl({required this.sqfliteService});
+  UserLocalDataSourceImpl({required this.isar});
 
   @override
-  Future<User> getUser({required String id}) async {
-    final result = await sqfliteService.get(
-      table: _table,
-      id: id,
-      columns: _column,
-    );
+  Future<void> deleteAllUser() async {
+    try {
+      await isar.writeTxn(() async {
+        final idStrings =
+            await isar.userIsars.where().idStringProperty().findAll();
 
-    return User.fromJson(result as Map<String, dynamic>);
-  }
-
-  @override
-  Future<List<User>> getUsers() async {
-    final result = await sqfliteService.getList(
-      table: _table,
-      columns: _column,
-    );
-
-    final data = List<dynamic>.from(result ?? []).toList();
-
-    return List<Map<String, dynamic>>.from(data)
-        .map((item) => User.fromJson(Map<String, dynamic>.from(item)))
-        .toList();
-  }
-
-  @override
-  Future<void> setUser({required User user}) async {
-    await sqfliteService.insert(table: _table, map: user.toJson());
-    return;
-  }
-
-  @override
-  Future<void> setUsers({required List<User> users}) async {
-    final List<Map<String, dynamic>> maps =
-        users.map((e) => e.toJson()).toList();
-    await sqfliteService.insertBulk(table: _table, maps: maps);
-    return;
+        await isar.userIsars.deleteAllByIdString(idStrings);
+        await isar.locationIsars.deleteAllByIdString(idStrings);
+      });
+      return;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
   }
 
   @override
   Future<void> deleteUser({required String id}) async {
-    await sqfliteService.delete(table: _table, id: id);
-    return;
+    try {
+      await isar.writeTxn(() async {
+        await isar.userIsars.deleteByIdString(id);
+        await isar.locationIsars.deleteByIdString(id);
+      });
+      return;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
   }
 
   @override
-  Future<void> deleteAllUser() async {
-    await sqfliteService.deleteAll(table: _table);
-    return;
+  Future<User> getUser({required String id}) async {
+    try {
+      final userIsar = await isar.userIsars.getByIdString(id);
+      await userIsar?.location.load();
+
+      final user = userIsar!.toUser();
+
+      return user;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<List<User>> getUsers({int? page, int limit = Pagination.limit}) async {
+    try {
+      final query = isar.userIsars.where();
+      if (page != null) {
+        final offset = (limit * page) - limit;
+        query.offset(offset).limit(limit);
+      }
+      final userIsars = await query.findAll();
+
+      final List<User> users = [];
+      for (UserIsar userIsar in userIsars) {
+        final user = userIsar.toUser();
+        users.add(user);
+      }
+
+      return users;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<void> setUser({required User user}) async {
+    try {
+      final userIsar = UserIsar.fromUser(user);
+
+      await isar.writeTxn(() async {
+        await isar.userIsars.putByIdString(userIsar);
+        await isar.locationIsars.put(userIsar.location.value!);
+        await userIsar.location.save();
+      });
+      return;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
+  }
+
+  @override
+  Future<void> setUsers({required List<User> users}) async {
+    try {
+      await isar.writeTxn(() async {
+        for (User user in users) {
+          final userIsar = UserIsar.fromUser(user);
+          await isar.userIsars.putByIdString(userIsar);
+        }
+      });
+      return;
+    } on Exception catch (e) {
+      throw LocalStorageFailure(message: e.toString());
+    }
   }
 }

@@ -20,3 +20,7 @@
 
 # 0.1.5
 - new: no internet connection handling
+
+# 0.1.6
+- new: isar as local storage
+- update: fix sqflite nested model example

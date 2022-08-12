@@ -12,7 +12,14 @@ class UserCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: ClipOval(child: Image.network(user.picture)),
+        leading: ClipOval(
+          child: Image.network(
+            user.picture,
+            errorBuilder: (context, obj, stackTrace) {
+              return const Icon(Icons.error);
+            },
+          ),
+        ),
         title: Text(user.firstName),
         subtitle: Text(user.lastName),
         trailing: IconButton(

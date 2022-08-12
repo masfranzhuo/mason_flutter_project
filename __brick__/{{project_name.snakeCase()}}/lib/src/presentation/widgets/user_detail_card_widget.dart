@@ -18,7 +18,14 @@ class UserDetailCardWidget extends StatelessWidget {
           children: [
             Padding(
               padding: EdgeInsets.fromLTRB(16.r, 16.r, 16.r, 0),
-              child: ClipOval(child: Image.network(user.picture)),
+              child: ClipOval(
+                child: Image.network(
+                  user.picture,
+                  errorBuilder: (context, obj, stackTrace) {
+                    return const Icon(Icons.error);
+                  },
+                ),
+              ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(16.r, 8.r, 16.r, 0),

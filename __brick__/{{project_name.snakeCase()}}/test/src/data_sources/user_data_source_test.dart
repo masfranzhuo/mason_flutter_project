@@ -35,6 +35,12 @@ void main() {
         () async => await dataSource.getUsers(page: 1, limit: 10),
         throwsA(isA<Exception>()),
       );
+
+      verify(mockHttpClientService.get(
+        path: anyNamed('path'),
+        queryParameters: anyNamed('queryParameters'),
+        options: anyNamed('options'),
+      ));
     });
     test('should return list of users', () async {
       final response = Response(
@@ -72,6 +78,12 @@ void main() {
         () async => await dataSource.getUser(id: 'anyId'),
         throwsA(isA<Exception>()),
       );
+
+      verify(mockHttpClientService.get(
+        path: anyNamed('path'),
+        queryParameters: anyNamed('queryParameters'),
+        options: anyNamed('options'),
+      ));
     });
 
     test('should return user', () async {

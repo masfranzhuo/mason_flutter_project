@@ -19,13 +19,13 @@ class User with _$User {
     required String firstName,
     required String lastName,
     required String picture,
-    String? gender,
-    String? email,
-    String? phone,
     @JsonKey(fromJson: DateConfig.dateTimeFromJson, toJson: DateConfig.dateTimeToJson)
         required DateTime? dateOfBirth,
     @JsonKey(fromJson: DateConfig.dateTimeFromJson, toJson: DateConfig.dateTimeToJson)
         required DateTime? registerDate,
+    String? gender,
+    String? email,
+    String? phone,
     Location? location,
   }) = _User;
 
