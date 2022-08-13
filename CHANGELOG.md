@@ -24,3 +24,6 @@
 # 0.1.6
 - new: isar as local storage
 - update: fix sqflite nested model example
+
+# 0.1.6+1
+- update: add isar package in pubspec
