@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/internet_connection.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
@@ -9,18 +10,20 @@ import 'package:injectable/injectable.dart';
 abstract class UserRepository {
   Future<Either<Failure, List<User>>> getUsers({
     required int page,
-    int limit = Pagination.limit,
+    int limit = PaginationConfig.limit,
   });
   Future<Either<Failure, User>> getUser({required String id});
 }
 
 @LazySingleton(as: UserRepository)
 class UserRepositoryImpl implements UserRepository {
+  final InternetConnectionService internetConnectionService;
   final UserDataSource dataSource;
   final UserLocalDataSource localDataSource;
   // final UserSqfliteDataSource sqfliteDataSource;
 
   UserRepositoryImpl({
+    required this.internetConnectionService,
     required this.dataSource,
     required this.localDataSource,
     // required this.sqfliteDataSource,
@@ -29,12 +32,14 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, List<User>>> getUsers({
     required int page,
-    int limit = Pagination.limit,
+    int limit = PaginationConfig.limit,
   }) async {
     try {
+      await internetConnectionService.checkConnection();
+
       final result = await dataSource.getUsers(page: page, limit: limit);
       await localDataSource.setUsers(users: result);
-      // await sqfliteDataSource.setUsers(users: result);
+      // await sqfliteDataSource.setUsers(users: result);\
 
       return Right(result);
     } on InternetConnectionFailure catch (failure) {
@@ -68,6 +73,8 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<Failure, User>> getUser({required String id}) async {
     try {
+      await internetConnectionService.checkConnection();
+
       final result = await dataSource.getUser(id: id);
       await localDataSource.setUser(user: result);
 

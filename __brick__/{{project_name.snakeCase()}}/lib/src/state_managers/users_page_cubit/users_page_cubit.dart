@@ -14,12 +14,10 @@ class UsersPageCubit extends Cubit<UsersPageState> {
   UsersPageCubit({
     required GetUsers getUsers,
   })  : _getUsers = getUsers,
-        super(UsersPageState());
+        super(Initial());
 
   void getUsers({bool isReload = false}) async {
-    emit(state.copyWith(
-      isLoading: true,
-      failure: null,
+    emit(Loading(
       page: isReload ? 0 : state.page,
       users: isReload ? [] : state.users,
     ));
@@ -27,38 +25,32 @@ class UsersPageCubit extends Cubit<UsersPageState> {
     final result = await _getUsers(page: state.page);
 
     result.fold(
-      (failure) => emit(state.copyWith(
-        failure: failure,
-        isLoading: false,
+      (failure) => emit(Error(failure: failure, users: state.users)),
+      (users) => emit(Loaded(
+        page: state.page + 1,
+        users: [...state.users, ...users],
       )),
-      (users) {
-        if (users.isEmpty) {
-          emit(state.copyWith(
-            failure: const UnexpectedFailure(
-              code: 'NO_DATA_FAILURE',
-              message: 'No more data available',
-            ),
-            isLoading: false,
-          ));
-          return;
-        }
-        emit(state.copyWith(
-          isLoading: false,
-          page: state.page + 1,
-          users: [...state.users, ...users],
-        ));
-      },
     );
   }
 }
 
 @freezed
 class UsersPageState with _$UsersPageState {
-  const UsersPageState._();
-  factory UsersPageState({
-    Failure? failure,
-    @Default(false) bool isLoading,
+  factory UsersPageState.initial({
     @Default([]) List<User> users,
     @Default(0) int page,
-  }) = _UsersPageState;
+  }) = Initial;
+  factory UsersPageState.loading({
+    @Default([]) List<User> users,
+    @Default(0) int page,
+  }) = Loading;
+  factory UsersPageState.error({
+    @Default([]) List<User> users,
+    @Default(0) int page,
+    required Failure failure,
+  }) = Error;
+  factory UsersPageState.loaded({
+    @Default([]) List<User> users,
+    @Default(0) int page,
+  }) = Loaded;
 }

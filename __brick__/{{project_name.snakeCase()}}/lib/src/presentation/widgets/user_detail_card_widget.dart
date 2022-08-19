@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/date_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

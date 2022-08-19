@@ -13,8 +13,21 @@ class GetUsers {
 
   Future<Either<Failure, List<User>>> call({
     required int page,
-    int limit = Pagination.limit,
+    int limit = PaginationConfig.limit,
   }) async {
-    return repository.getUsers(page: page, limit: limit);
+    final result = await repository.getUsers(page: page, limit: limit);
+    return result.fold(
+      (failure) => Left(failure),
+      (users) {
+        if (users.isEmpty) {
+          return const Left(UnexpectedFailure(
+            code: 'NO_DATA_ERROR',
+            message: 'No more data available',
+          ));
+        } else {
+          return Right(users);
+        }
+      },
+    );
   }
 }

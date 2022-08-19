@@ -14,17 +14,16 @@ class UserDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider.value(
       value: GetIt.I<UserDetailPageCubit>()..getUser(id: id),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(GetIt.I<TranslatorService>().translate(
-            context,
-            'label.pages.userDetail.title',
-          )),
-        ),
-        body: LayoutBuilder(
-          builder: (context, constraints) => _builder(
-            context,
-            constraints,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(GetIt.I<TranslatorService>().translate(
+              context,
+              'label.pages.userDetail.title',
+            )),
+          ),
+          body: LayoutBuilder(
+            builder: (context, constraints) => _builder(context, constraints),
           ),
         ),
       ),
@@ -32,20 +31,13 @@ class UserDetailPage extends StatelessWidget {
   }
 
   Widget _builder(BuildContext context, BoxConstraints constraints) {
-    return BlocConsumer<UserDetailPageCubit, UserDetailPageState>(
-      listener: (context, state) {
-        if (state.failure != null) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(SnackBar(
-              content: Text(state.failure!.message),
-            ));
-        }
-      },
+    return BlocBuilder<UserDetailPageCubit, UserDetailPageState>(
       builder: (context, state) {
-        return state.isLoading || state.failure != null
-            ? const Center(child: CircularProgressIndicator())
-            : UserDetailCardWidget(user: state.user!);
+        return state.when(
+          loading: () => const Center(child: CircularProgressIndicator()),
+          error: (failure) => Center(child: Text(failure.message)),
+          loaded: (user) => UserDetailCardWidget(user: user),
+        );
       },
     );
   }

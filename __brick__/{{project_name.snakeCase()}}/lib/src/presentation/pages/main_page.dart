@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/presentation/pages/users_page/users_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
@@ -22,7 +23,7 @@ class MainPage extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: GetIt.I<BaseConfig>().showDebugInfo,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: ThemeConfig.primaryColor,
         ),
         localizationsDelegates: [
           flutterI18nDelegate,

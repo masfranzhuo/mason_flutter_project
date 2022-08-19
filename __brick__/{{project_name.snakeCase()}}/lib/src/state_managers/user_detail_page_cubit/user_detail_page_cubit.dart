@@ -14,26 +14,21 @@ class UserDetailPageCubit extends Cubit<UserDetailPageState> {
   UserDetailPageCubit({
     required GetUser getUser,
   })  : _getUser = getUser,
-        super(UserDetailPageState());
+        super(Loading());
 
   void getUser({required String id}) async {
-    emit(UserDetailPageState().copyWith(isLoading: true));
-
     final result = await _getUser(id: id);
 
     result.fold(
-      (failure) => emit(state.copyWith(failure: failure, isLoading: false)),
-      (user) => emit(state.copyWith(isLoading: false, user: user)),
+      (failure) => emit(Error(failure: failure)),
+      (user) => emit(Loaded(user: user)),
     );
   }
 }
 
 @freezed
 class UserDetailPageState with _$UserDetailPageState {
-  const UserDetailPageState._();
-  factory UserDetailPageState({
-    Failure? failure,
-    @Default(false) bool isLoading,
-    User? user,
-  }) = _UserDetailPageState;
+  factory UserDetailPageState.loading() = Loading;
+  factory UserDetailPageState.error({required Failure failure}) = Error;
+  factory UserDetailPageState.loaded({required User user}) = Loaded;
 }

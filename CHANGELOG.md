@@ -27,3 +27,6 @@
 
 # 0.1.6+1
 - update: add isar package in pubspec
+
+# 0.1.6+2
+- update: minor refactor cubit state implementation

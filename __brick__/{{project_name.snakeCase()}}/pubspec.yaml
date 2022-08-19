@@ -8,13 +8,14 @@ environment:
   sdk: ">=2.17.0 <3.0.0"
 
 dependencies:
+  connectivity_plus: ^2.3.6+1
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
   device_preview: ^1.1.0
   dio: ^4.0.6
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.1.1
   flutter_dotenv: ^5.0.2
   flutter_i18n: ^0.32.2
   flutter_localizations:
@@ -34,7 +35,7 @@ dependencies:
   sqflite: ^2.0.3
 
 dev_dependencies:
-  bloc_test: ^9.0.3
+  bloc_test: ^9.1.0
   build_runner: ^2.2.0
   flutter_lints: ^2.0.1
   flutter_test:

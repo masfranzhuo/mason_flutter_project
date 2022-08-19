@@ -9,7 +9,7 @@ import 'package:isar/isar.dart';
 abstract class UserLocalDataSource {
   Future<void> setUsers({required List<User> users});
   Future<void> setUser({required User user});
-  Future<List<User>> getUsers({int? page, int limit = Pagination.limit});
+  Future<List<User>> getUsers({int? page, int limit = PaginationConfig.limit});
   Future<User> getUser({required String id});
   Future<void> deleteUser({required String id});
   Future<void> deleteAllUser();
@@ -65,7 +65,8 @@ class UserLocalDataSourceImpl implements UserLocalDataSource {
   }
 
   @override
-  Future<List<User>> getUsers({int? page, int limit = Pagination.limit}) async {
+  Future<List<User>> getUsers(
+      {int? page, int limit = PaginationConfig.limit}) async {
     try {
       final query = isar.userIsars.where();
       if (page != null) {

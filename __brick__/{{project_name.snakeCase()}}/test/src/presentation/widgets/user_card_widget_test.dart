@@ -8,8 +8,6 @@ import 'package:mocktail/mocktail.dart';
 import '../mock_helpers.dart';
 import '../../entities/entity_helpers.dart';
 
-/// TODO: image network error test
-///
 void main() {
   late MockOnTap mockOnTap;
 

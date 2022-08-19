@@ -1,12 +1,13 @@
 import 'dart:convert';
 
-import 'package:{{project_name.snakeCase()}}/core/config/date_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/location.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 
 import '../../fixtures/fixtures_reader.dart';
 
-// User and List of Users
+/// User and List of Users
+///
 final userJson = Map<String, dynamic>.from(
   json.decode(fixture('fixtures/users/single.json')),
 );

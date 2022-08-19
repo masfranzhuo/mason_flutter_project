@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
-import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:{{project_name.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
 import 'package:{{project_name.snakeCase()}}/src/use_cases/get_users.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -23,7 +22,7 @@ void main() {
 
   group('getUsers', () {
     blocTest(
-      'should emit failure, when return error',
+      'should emit error, when return failure',
       build: () {
         when(mockGetUsers(
           page: anyNamed('page'),
@@ -35,11 +34,8 @@ void main() {
       },
       act: (_) async => cubit.getUsers(),
       expect: () => [
-        UsersPageState(isLoading: true),
-        UsersPageState(
-          isLoading: false,
-          failure: const UnexpectedFailure(),
-        ),
+        Loading(),
+        Error(failure: const UnexpectedFailure()),
       ],
       verify: (_) async {
         verify(mockGetUsers(
@@ -49,36 +45,7 @@ void main() {
       },
     );
     blocTest(
-      'should emit failure code = NO_DATA_FAILURE, when return empty users',
-      build: () {
-        when(mockGetUsers(
-          page: anyNamed('page'),
-          limit: anyNamed('limit'),
-        )).thenAnswer(
-          (_) async => const Right(<User>[]),
-        );
-        return cubit;
-      },
-      act: (_) async => cubit.getUsers(),
-      expect: () => [
-        UsersPageState(isLoading: true),
-        UsersPageState(
-          isLoading: false,
-          failure: const UnexpectedFailure(
-            code: 'NO_DATA_FAILURE',
-            message: 'No more data available',
-          ),
-        ),
-      ],
-      verify: (_) async {
-        verify(mockGetUsers(
-          page: anyNamed('page'),
-          limit: anyNamed('limit'),
-        ));
-      },
-    );
-    blocTest(
-      'should emit users and page = 1, when get users for the first time',
+      'should emit loaded users and page = 1, when get users for the first time',
       build: () {
         when(mockGetUsers(
           page: anyNamed('page'),
@@ -90,12 +57,8 @@ void main() {
       },
       act: (_) async => cubit.getUsers(),
       expect: () => [
-        UsersPageState(isLoading: true),
-        UsersPageState(
-          isLoading: false,
-          page: 1,
-          users: users,
-        ),
+        Loading(),
+        Loaded(page: 1, users: users),
       ],
       verify: (_) async {
         verify(mockGetUsers(
@@ -105,7 +68,7 @@ void main() {
       },
     );
     blocTest(
-      'should emit users and page = 2, when load more users',
+      'should emit loaded users and page = 2, when load more users',
       build: () {
         when(mockGetUsers(
           page: anyNamed('page'),
@@ -120,11 +83,7 @@ void main() {
         ..getUsers(),
       skip: 2,
       expect: () => [
-        UsersPageState(
-          isLoading: false,
-          page: 2,
-          users: [...users, ...users],
-        ),
+        Loaded(page: 2, users: [...users, ...users]),
       ],
       verify: (_) async {
         verify(mockGetUsers(
@@ -134,7 +93,7 @@ void main() {
       },
     );
     blocTest(
-      'should emit users and page = 1, when isReload is true',
+      'should emit loaded users and page = 1, when isReload is true',
       build: () {
         when(mockGetUsers(
           page: anyNamed('page'),
@@ -145,18 +104,10 @@ void main() {
         return cubit;
       },
       act: (_) async => cubit.getUsers(isReload: true),
-      seed: () => UsersPageState(
-        isLoading: false,
-        page: 1,
-        users: users,
-      ),
+      seed: () => UsersPageState.loaded(page: 1, users: users),
       expect: () => [
-        UsersPageState(isLoading: true),
-        UsersPageState(
-          isLoading: false,
-          page: 1,
-          users: users,
-        ),
+        Loading(),
+        Loaded(page: 1, users: users),
       ],
       verify: (_) async {
         verify(mockGetUsers(

@@ -2,14 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/http_client.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class UserDataSource {
   Future<List<User>> getUsers({
     required int page,
-    int limit = Pagination.limit,
+    int limit = PaginationConfig.limit,
   });
   Future<User> getUser({required String id});
 }
@@ -23,7 +22,7 @@ class UserDataSourceImpl implements UserDataSource {
   @override
   Future<List<User>> getUsers({
     required int page,
-    int limit = Pagination.limit,
+    int limit = PaginationConfig.limit,
   }) async {
     try {
       final result = await client.get(
@@ -39,8 +38,6 @@ class UserDataSourceImpl implements UserDataSource {
       return List<Map<String, dynamic>>.from(data)
           .map((item) => User.fromJson(Map<String, dynamic>.from(item)))
           .toList();
-    } on InternetConnectionFailure {
-      rethrow;
     } on Exception catch (e) {
       throw Exception(e.toString());
     }
@@ -57,8 +54,6 @@ class UserDataSourceImpl implements UserDataSource {
       );
 
       return User.fromJson(result.data as Map<String, dynamic>);
-    } on InternetConnectionFailure {
-      rethrow;
     } on Exception catch (e) {
       throw Exception(e.toString());
     }

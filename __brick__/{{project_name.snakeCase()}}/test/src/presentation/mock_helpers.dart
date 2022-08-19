@@ -8,7 +8,8 @@ import 'package:mocktail/mocktail.dart';
 
 class FakeBuildContext extends Fake implements BuildContext {}
 
-// function
+/// function
+///
 abstract class OnTap {
   void call(BuildContext context);
 }
@@ -19,7 +20,8 @@ class MockOnTap extends Mock implements OnTap {
   }
 }
 
-// translator service
+/// translator service
+///
 class MockTranslatorService extends Mock implements TranslatorServiceImpl {
   MockTranslatorService() {
     registerFallbackValue(FakeBuildContext());
@@ -36,6 +38,7 @@ class MockTranslatorService extends Mock implements TranslatorServiceImpl {
 }
 
 /// navigation
+///
 class FakeRoute extends Fake implements Route<dynamic> {}
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {
@@ -44,7 +47,8 @@ class MockNavigatorObserver extends Mock implements NavigatorObserver {
   }
 }
 
-// cubits
+/// cubits
+///
 class MockUsersPageCubit extends MockCubit<UsersPageState>
     implements UsersPageCubit {}
 
@@ -55,7 +59,8 @@ class MockUserDetailPageCubit extends MockCubit<UserDetailPageState>
 
 class FakeUserDetailPageState extends Fake implements UserDetailPageState {}
 
-// base config
+/// base config
+///
 class MockBaseConfig extends Mock implements BaseConfig {
   MockBaseConfig() {
     when(() => appName).thenReturn('any string');

@@ -10,6 +10,7 @@ abstract class HttpClientService {
   });
   Future<Response> post({
     required String path,
+    required dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
   });
@@ -59,13 +60,14 @@ class HttpClientServiceImpl implements HttpClientService {
 
       return response;
     } on DioError catch (e) {
-      return e.response!;
+      throw (Exception(e));
     }
   }
 
   @override
   Future<Response> post({
     required String path,
+    required dynamic data,
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
@@ -73,13 +75,14 @@ class HttpClientServiceImpl implements HttpClientService {
     try {
       final response = await dio.post(
         path,
+        data: data,
         queryParameters: queryParameters,
         options: options,
       );
 
       return response;
     } on DioError catch (e) {
-      return e.response!;
+      throw (Exception(e));
     }
   }
 
@@ -101,7 +104,7 @@ class HttpClientServiceImpl implements HttpClientService {
 
       return response;
     } on DioError catch (e) {
-      return e.response!;
+      throw (Exception(e));
     }
   }
 
@@ -123,7 +126,7 @@ class HttpClientServiceImpl implements HttpClientService {
 
       return response;
     } on DioError catch (e) {
-      return e.response!;
+      throw (Exception(e));
     }
   }
 
@@ -145,7 +148,7 @@ class HttpClientServiceImpl implements HttpClientService {
 
       return response;
     } on DioError catch (e) {
-      return e.response!;
+      throw (Exception(e));
     }
   }
 }

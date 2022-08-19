@@ -1,8 +1,5 @@
 title: "Flutter Demo"
 
-button:
-  loadMore: "Load More"
-
 pages:
   home:
     title: "Home Page"

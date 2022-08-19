@@ -1,8 +1,5 @@
 title: "Flutter Demo"
 
-button:
-  loadMore: "Muat Data Lagi"
-
 pages:
   home:
     title: "Halaman Utama"

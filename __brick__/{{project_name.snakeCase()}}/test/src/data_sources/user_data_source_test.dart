@@ -24,7 +24,7 @@ void main() {
   });
 
   group('getUsers', () {
-    test('should throw UnexpectedFailure()', () async {
+    test('should throw Exception', () async {
       when(mockHttpClientService.get(
         path: anyNamed('path'),
         queryParameters: anyNamed('queryParameters'),
@@ -42,6 +42,7 @@ void main() {
         options: anyNamed('options'),
       ));
     });
+
     test('should return list of users', () async {
       final response = Response(
         statusCode: 201,

@@ -1,5 +1,42 @@
-class Pagination {
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+class PaginationConfig {
   static const limit = 10;
+}
+
+class ThemeConfig {
+  static const primaryColor = Colors.blue;
+}
+
+class NumberConfig {
+  static String format(double number, [String locale = 'en_US']) =>
+      NumberFormat('#,##0', locale).format(number);
+
+  static String currencyFormat(
+    double number, [
+    String prefix = '\$',
+    String locale = 'en_US',
+  ]) =>
+      '$prefix${NumberFormat('#,##0', locale).format(number)}';
+}
+
+class DateConfig {
+  static String dateFormat(DateTime date, [String locale = 'en_US']) =>
+      DateFormat('dd MMMM yyyy', locale).format(date);
+
+  static String dateTimeFormat(DateTime date, [String locale = 'en_US']) =>
+      DateFormat('dd MMMM yyyy, HH:mm', locale).format(date);
+
+  static String dateTimeNameFormat(DateTime date, [String locale = 'en_US']) =>
+      DateFormat('EEEE,dd MMMM yyyy, HH:mm', locale).format(date);
+
+  static DateTime? dateTimeFromJson(String? date) =>
+      date != null && date.isNotEmpty ? DateTime.parse(date).toLocal() : null;
+
+  static String? dateTimeToJson(DateTime? date) =>
+      // ignore: prefer_null_aware_operators
+      date != null ? date.toUtc().toIso8601String() : null;
 }
 
 class DatabaseSql {

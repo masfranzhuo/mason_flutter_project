@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:{{project_name.snakeCase()}}/core/services/internet_connection.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
 import 'package:{{project_name.snakeCase()}}/src/data_sources/user_data_source.dart';
 import 'package:{{project_name.snakeCase()}}/src/data_sources/user_local_data_source.dart';
@@ -11,21 +12,25 @@ import '../entities/entity_helpers.dart';
 import 'user_repository_test.mocks.dart';
 
 @GenerateMocks([
+  InternetConnectionService,
   UserDataSource,
   UserLocalDataSource,
   // UserSqfliteDataSource,
 ])
 void main() {
   late UserRepositoryImpl repository;
+  late MockInternetConnectionService mockInternetConnectionService;
   late MockUserDataSource mockUserDataSource;
   late MockUserLocalDataSource mockUserLocalDataSource;
   // late MockUserSqfliteDataSource mockUserSqfliteDataSource;
 
   setUp(() {
+    mockInternetConnectionService = MockInternetConnectionService();
     mockUserDataSource = MockUserDataSource();
     mockUserLocalDataSource = MockUserLocalDataSource();
     // mockUserSqfliteDataSource = MockUserSqfliteDataSource();
     repository = UserRepositoryImpl(
+      internetConnectionService: mockInternetConnectionService,
       dataSource: mockUserDataSource,
       localDataSource: mockUserLocalDataSource,
       // sqfliteDataSource: mockUserSqfliteDataSource,
@@ -33,7 +38,9 @@ void main() {
   });
 
   group('getUsers', () {
-    test('should return UnexpectedFailure(), when throw exception', () async {
+    test('should return UnexpectedFailure(), when catch exception', () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -43,10 +50,15 @@ void main() {
 
       expect((result as Left).value, isA<UnexpectedFailure>());
 
-      verify(mockUserDataSource.getUsers(page: 1, limit: 10));
+      verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
+        mockUserDataSource.getUsers(page: 1, limit: 10),
+      ]);
     });
 
-    test('should return UnexpectedFailure(), when throw failure', () async {
+    test('should return UnexpectedFailure(), when catch failure', () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -56,11 +68,17 @@ void main() {
 
       expect((result as Left).value, isA<UnexpectedFailure>());
 
-      verify(mockUserDataSource.getUsers(page: 1, limit: 10));
+      verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
+        mockUserDataSource.getUsers(page: 1, limit: 10),
+      ]);
     });
 
-    test('should return LocalStorageFailure(), when local data source error',
+    test(
+        'should return LocalStorageFailure(), when catch local data source error',
         () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -74,18 +92,17 @@ void main() {
       expect((result as Left).value, isA<LocalStorageFailure>());
 
       verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
         mockUserDataSource.getUsers(page: 1, limit: 10),
         mockUserLocalDataSource.setUsers(users: users),
       ]);
     });
 
     test(
-        'should return InternetConnectionFailure(), when internet connection error and empty local data source',
+        'should return InternetConnectionFailure(), when catch internet connection error and empty local data source',
         () async {
-      when(mockUserDataSource.getUsers(
-        page: anyNamed('page'),
-        limit: anyNamed('limit'),
-      )).thenThrow(const InternetConnectionFailure());
+      when(mockInternetConnectionService.checkConnection())
+          .thenThrow(const InternetConnectionFailure());
       when(mockUserLocalDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -96,17 +113,15 @@ void main() {
       expect((result as Left).value, isA<InternetConnectionFailure>());
 
       verifyInOrder([
-        mockUserDataSource.getUsers(page: 1, limit: 10),
+        mockInternetConnectionService.checkConnection(),
       ]);
     });
 
     test(
-        'should return list of users, when internet connection error and local data source has data',
+        'should return list of users, when catch internet connection error and local data source has data',
         () async {
-      when(mockUserDataSource.getUsers(
-        page: anyNamed('page'),
-        limit: anyNamed('limit'),
-      )).thenThrow(const InternetConnectionFailure());
+      when(mockInternetConnectionService.checkConnection())
+          .thenThrow(const InternetConnectionFailure());
       when(mockUserLocalDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -117,11 +132,13 @@ void main() {
       expect((result as Right).value, users);
 
       verifyInOrder([
-        mockUserDataSource.getUsers(page: 1, limit: 10),
+        mockInternetConnectionService.checkConnection(),
       ]);
     });
 
     test('should return list of users', () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUsers(
         page: anyNamed('page'),
         limit: anyNamed('limit'),
@@ -135,6 +152,7 @@ void main() {
       expect((result as Right).value, users);
 
       verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
         mockUserDataSource.getUsers(page: 1, limit: 10),
         mockUserLocalDataSource.setUsers(users: users),
       ]);
@@ -142,7 +160,9 @@ void main() {
   });
 
   group('getUser', () {
-    test('should return UnexpectedFailure(), when throw exception', () async {
+    test('should return UnexpectedFailure(), when catch exception', () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUser(
         id: anyNamed('id'),
       )).thenThrow(Exception());
@@ -151,10 +171,15 @@ void main() {
 
       expect((result as Left).value, isA<UnexpectedFailure>());
 
-      verify(mockUserDataSource.getUser(id: 'anyId'));
+      verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
+        mockUserDataSource.getUser(id: 'anyId'),
+      ]);
     });
 
-    test('should return UnexpectedFailure(), when throw failure', () async {
+    test('should return UnexpectedFailure(), when catch failure', () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUser(
         id: anyNamed('id'),
       )).thenThrow(const UnexpectedFailure());
@@ -163,11 +188,17 @@ void main() {
 
       expect((result as Left).value, isA<UnexpectedFailure>());
 
-      verify(mockUserDataSource.getUser(id: 'anyId'));
+      verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
+        mockUserDataSource.getUser(id: 'anyId'),
+      ]);
     });
 
-    test('should return LocalStorageFailure(), when local data source error',
+    test(
+        'should return LocalStorageFailure(), when catch local data source error',
         () async {
+      when(mockInternetConnectionService.checkConnection())
+          .thenAnswer((_) async => unit);
       when(mockUserDataSource.getUser(
         id: anyNamed('id'),
       )).thenAnswer((_) async => user);
@@ -180,35 +211,42 @@ void main() {
       expect((result as Left).value, isA<LocalStorageFailure>());
 
       verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
         mockUserDataSource.getUser(id: 'anyId'),
         mockUserLocalDataSource.setUser(user: user),
       ]);
     });
 
     test(
-        'should return InternetConnectionFailure(), when internet connection error and empty local data source',
+        'should return InternetConnectionFailure(), when catch internet connection error and empty local data source',
         () async {
-      when(mockUserDataSource.getUser(
-        id: anyNamed('id'),
-      )).thenThrow(const InternetConnectionFailure());
+      when(mockInternetConnectionService.checkConnection())
+          .thenThrow(const InternetConnectionFailure());
 
       final result = await repository.getUser(id: 'anyId');
 
       expect((result as Left).value, isA<InternetConnectionFailure>());
 
-      verify(mockUserDataSource.getUser(id: 'anyId'));
+      verify(mockInternetConnectionService.checkConnection());
     });
 
     test('should return user', () async {
       when(mockUserDataSource.getUser(
         id: anyNamed('id'),
       )).thenAnswer((_) async => user);
+      when(mockUserLocalDataSource.setUser(
+        user: anyNamed('user'),
+      )).thenAnswer((_) async => user);
 
       final result = await repository.getUser(id: 'anyId');
 
       expect((result as Right).value, user);
 
-      verify(mockUserDataSource.getUser(id: 'anyId'));
+      verifyInOrder([
+        mockInternetConnectionService.checkConnection(),
+        mockUserDataSource.getUser(id: 'anyId'),
+        mockUserLocalDataSource.setUser(user: user)
+      ]);
     });
   });
 }

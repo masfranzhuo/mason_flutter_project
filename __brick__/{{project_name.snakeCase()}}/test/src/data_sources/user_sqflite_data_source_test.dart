@@ -75,6 +75,7 @@ void main() {
 
     test('should return user, when user location exist', () async {
       /// encode for the right input
+      ///
       userJson['location'] = jsonEncode(userJson['location']);
 
       when(mockSqfliteService.get(

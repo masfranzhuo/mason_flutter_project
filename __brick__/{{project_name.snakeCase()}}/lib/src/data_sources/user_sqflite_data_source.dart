@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 abstract class UserSqfliteDataSource {
   Future<void> setUsers({required List<User> users});
   Future<void> setUser({required User user});
-  Future<List<User>> getUsers({int? page, int limit = Pagination.limit});
+  Future<List<User>> getUsers({int? page, int limit = PaginationConfig.limit});
   Future<User> getUser({required String id});
   Future<void> deleteUser({required String id});
   Future<void> deleteAllUser();
@@ -69,7 +69,8 @@ class UserSqfliteDataSourceImpl implements UserSqfliteDataSource {
   }
 
   @override
-  Future<List<User>> getUsers({int? page, int limit = Pagination.limit}) async {
+  Future<List<User>> getUsers(
+      {int? page, int limit = PaginationConfig.limit}) async {
     try {
       int? offset;
       if (page != null) {

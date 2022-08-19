@@ -3,7 +3,7 @@
 
 # {{project_name.snakeCase()}}
 
-A new Flutter project architecture.
+A new Flutter project.
 
 ## Getting Started
 

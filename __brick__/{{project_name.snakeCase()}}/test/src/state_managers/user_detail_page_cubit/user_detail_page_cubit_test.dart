@@ -31,11 +31,7 @@ void main() {
       },
       act: (_) async => cubit.getUser(id: 'anyId'),
       expect: () => [
-        UserDetailPageState(isLoading: true),
-        UserDetailPageState(
-          isLoading: false,
-          failure: const UnexpectedFailure(),
-        ),
+        Error(failure: const UnexpectedFailure()),
       ],
       verify: (_) async {
         verify(mockGetUser(id: anyNamed('id')));
@@ -50,10 +46,7 @@ void main() {
         return cubit;
       },
       act: (_) async => cubit.getUser(id: 'anyId'),
-      expect: () => [
-        UserDetailPageState(isLoading: true),
-        UserDetailPageState(isLoading: false, user: user),
-      ],
+      expect: () => [Loaded(user: user)],
       verify: (_) async {
         verify(mockGetUser(id: anyNamed('id')));
       },
