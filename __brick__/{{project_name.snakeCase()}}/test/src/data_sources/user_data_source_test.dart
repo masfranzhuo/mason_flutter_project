@@ -6,7 +6,7 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/http_client.dart';
 
-import '../entities/entity_helpers.dart';
+import '../../helpers/entity_helpers.dart';
 import 'user_data_source_test.mocks.dart';
 
 @GenerateMocks([HttpClientService])
@@ -68,7 +68,7 @@ void main() {
   });
 
   group('getUser', () {
-    test('should throw UnexpectedFailure()', () async {
+    test('should throw Exception', () async {
       when(mockHttpClientService.get(
         path: anyNamed('path'),
         queryParameters: anyNamed('queryParameters'),

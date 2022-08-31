@@ -4,7 +4,7 @@ import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/loaders/decoders/yaml_decode_strategy.dart';
 import 'package:flutter_i18n/loaders/namespace_file_translation_loader.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/theme_config.dart';
 import 'package:{{project_name.snakeCase()}}/core/di/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

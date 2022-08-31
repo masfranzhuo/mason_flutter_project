@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
-import 'package:{{project_name.snakeCase()}}/src/presentation/pages/user_detail_page/user_detail_page.dart';
 import 'package:{{project_name.snakeCase()}}/src/presentation/widgets/user_card_widget.dart';
 import 'package:{{project_name.snakeCase()}}/src/state_managers/users_page_cubit/users_page_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
 
 class UsersPage extends StatefulWidget {
   const UsersPage({Key? key}) : super(key: key);
@@ -23,8 +23,8 @@ class _UsersPageState extends State<UsersPage> {
       final maxScroll = _scrollController.position.maxScrollExtent;
       final currentScroll = _scrollController.position.pixels;
       if (maxScroll <= currentScroll) {
-        GetIt.I<UsersPageCubit>().state.mapOrNull(loaded: (_) {
-          GetIt.I<UsersPageCubit>().getUsers();
+        GetIt.I<UsersPageCubit>().state.mapOrNull(loaded: (_) async {
+          await GetIt.I<UsersPageCubit>().getUsers();
         });
       }
     });
@@ -43,7 +43,7 @@ class _UsersPageState extends State<UsersPage> {
       value: GetIt.I<UsersPageCubit>()..getUsers(),
       child: RefreshIndicator(
         onRefresh: () async {
-          GetIt.I<UsersPageCubit>().getUsers(isReload: true);
+          await GetIt.I<UsersPageCubit>().getUsers(isReload: true);
         },
         child: SafeArea(
           child: Scaffold(
@@ -97,9 +97,7 @@ class _UsersPageState extends State<UsersPage> {
               UserCardWidget(
                 user: user,
                 onTap: (context) {
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => UserDetailPage(id: user.id),
-                  ));
+                  GoRouter.of(context).go('/user-detail/${user.id}');
                 },
               ),
             ];

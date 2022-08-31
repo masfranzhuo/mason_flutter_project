@@ -7,7 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../entities/entity_helpers.dart';
+import '../../../helpers/entity_helpers.dart';
 import 'users_page_cubit_test.mocks.dart';
 
 @GenerateMocks([GetUsers])

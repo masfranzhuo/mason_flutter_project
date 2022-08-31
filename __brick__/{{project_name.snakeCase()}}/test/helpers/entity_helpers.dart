@@ -4,7 +4,7 @@ import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/location.dart';
 import 'package:{{project_name.snakeCase()}}/src/entities/user.dart';
 
-import '../../fixtures/fixtures_reader.dart';
+import '../fixtures/fixtures_reader.dart';
 
 /// User and List of Users
 ///

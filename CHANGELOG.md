@@ -30,3 +30,7 @@
 
 # 0.1.6+2
 - update: minor refactor cubit state implementation
+
+# 0.1.7
+- new: add theme and route config
+- update: use latest isar dev package version 3.0.0-dev.12 for embedded

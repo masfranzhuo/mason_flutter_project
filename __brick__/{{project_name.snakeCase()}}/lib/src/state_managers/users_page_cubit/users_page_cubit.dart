@@ -16,7 +16,7 @@ class UsersPageCubit extends Cubit<UsersPageState> {
   })  : _getUsers = getUsers,
         super(Initial());
 
-  void getUsers({bool isReload = false}) async {
+  Future<void> getUsers({bool isReload = false}) async {
     emit(Loading(
       page: isReload ? 0 : state.page,
       users: isReload ? [] : state.users,

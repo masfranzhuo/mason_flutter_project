@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../entities/entity_helpers.dart';
+import '../../helpers/entity_helpers.dart';
 import 'user_sqflite_data_source_test.mocks.dart';
 
 @GenerateMocks([SqfliteService, User, Location])

@@ -10,7 +10,6 @@ class GetUser {
 
   GetUser({required this.repository});
 
-  Future<Either<Failure, User>> call({required String id}) async {
-    return repository.getUser(id: id);
-  }
+  Future<Either<Failure, User>> call({required String id}) async =>
+      await repository.getUser(id: id);
 }

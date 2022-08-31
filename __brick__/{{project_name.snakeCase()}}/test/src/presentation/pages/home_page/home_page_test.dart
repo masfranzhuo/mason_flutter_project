@@ -12,7 +12,7 @@ import 'package:{{project_name.snakeCase()}}/src/presentation/pages/home_page/ho
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../mock_helpers.dart';
+import '../../../../helpers/mock_helpers.dart';
 
 void main() {
   late MockBaseConfig mockBaseConfig;

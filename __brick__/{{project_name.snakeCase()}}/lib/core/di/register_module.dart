@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
-import 'package:{{project_name.snakeCase()}}/src/entities/location_isar.dart';
-import 'package:{{project_name.snakeCase()}}/src/entities/user_isar.dart';
+import 'package:{{project_name.snakeCase()}}/src/database/schemas/user_isar.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
@@ -10,18 +9,16 @@ import 'package:path_provider/path_provider.dart';
 
 @module
 abstract class RegisterModule {
-  Dio dio() => Dio(BaseOptions(
-        baseUrl: GetIt.I<BaseConfig>().baseUrl,
-      ));
+  Dio dio() => Dio(BaseOptions(baseUrl: GetIt.I<BaseConfig>().baseUrl));
 
   @preResolve
   Future<Box<dynamic>> get hive async => Hive.box('box');
 
   @preResolve
   Future<Isar> get isar async => await Isar.open(
-        [LocationIsarSchema, UserIsarSchema],
+        [UserIsarSchema],
         directory: (await getApplicationSupportDirectory()).path,
-        inspector: true,
+        name: GetIt.I<BaseConfig>().appName,
       );
 
   /// sqflite only works for mobile device currently

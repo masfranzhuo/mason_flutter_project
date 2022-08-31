@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc_test/bloc_test.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
 import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
@@ -12,8 +13,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../entities/entity_helpers.dart';
-import '../../mock_helpers.dart';
+import '../../../../helpers/entity_helpers.dart';
+import '../../../../helpers/mock_helpers.dart';
 
 void main() {
   late MockTranslatorService mockTranslatorService;
@@ -41,6 +42,8 @@ void main() {
   });
 
   Future<void> _setUpEnvironment(WidgetTester tester) async {
+    when(() => mockUserDetailPageCubit.getUser(id: any(named: 'id')))
+        .thenAnswer((_) async => Unit);
     await tester.pumpWidget(ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: (context, widget) => MaterialApp(

@@ -7,7 +7,7 @@ import 'package:mockito/annotations.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../entities/entity_helpers.dart';
+import '../../../helpers/entity_helpers.dart';
 import 'user_detail_page_cubit_test.mocks.dart';
 
 @GenerateMocks([GetUser])
@@ -22,7 +22,7 @@ void main() {
 
   group('getUser', () {
     blocTest(
-      'should emit failure, when return error',
+      'should emit error, when return failure',
       build: () {
         when(mockGetUser(id: anyNamed('id'))).thenAnswer(
           (_) async => const Left(UnexpectedFailure()),
@@ -30,15 +30,11 @@ void main() {
         return cubit;
       },
       act: (_) async => cubit.getUser(id: 'anyId'),
-      expect: () => [
-        Error(failure: const UnexpectedFailure()),
-      ],
-      verify: (_) async {
-        verify(mockGetUser(id: anyNamed('id')));
-      },
+      expect: () => [Loading(), Error(failure: const UnexpectedFailure())],
+      verify: (_) => verify(mockGetUser(id: anyNamed('id'))),
     );
     blocTest(
-      'should emit user, when successfully get user',
+      'should emit loaded, when successfully get user',
       build: () {
         when(mockGetUser(id: anyNamed('id'))).thenAnswer(
           (_) async => Right(user),
@@ -46,10 +42,8 @@ void main() {
         return cubit;
       },
       act: (_) async => cubit.getUser(id: 'anyId'),
-      expect: () => [Loaded(user: user)],
-      verify: (_) async {
-        verify(mockGetUser(id: anyNamed('id')));
-      },
+      expect: () => [Loading(), Loaded(user: user)],
+      verify: (_) => verify(mockGetUser(id: anyNamed('id'))),
     );
   });
 }

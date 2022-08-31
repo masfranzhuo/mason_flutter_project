@@ -1,0 +1,11 @@
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+      injectable_generator:injectable_builder:  
+        options:
+      isar_generator:
+        options:
+      json_serializable:
+        options:
