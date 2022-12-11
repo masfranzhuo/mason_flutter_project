@@ -1,0 +1,38 @@
+{
+    "error": {
+        "INTERNET_CONNECTION_ERROR": "No internet connection",
+        "LOCAL_ERROR": "Local data error",
+        "NETWORK_ERROR": "Network data error",
+        "NO_DATA_ERROR": "No more data available",
+        "UNEXPECTED_ERROR": "Unexpected error"
+    },
+    "label": {
+        "title": "Flutter Demo",
+        "pages": {
+            "home": {
+                "title": "Home Page",
+                "increment": "Increment",
+                "text": "You have pushed the button this many times:"
+            },
+            "users": {
+                "title": "List of Users"
+            },
+            "userDetail": {
+                "title": "User Detail"
+            }
+        }
+    },
+    "model": {
+        "user": {
+            "title": "Title",
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "name": "Name",
+            "email": "Email",
+            "gender": "Gender",
+            "dateOfBirth": "Date of Birth",
+            "joinFrom": "Join From",
+            "address": "Address"
+        }
+    }
+}

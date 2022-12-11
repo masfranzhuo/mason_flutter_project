@@ -1,0 +1,7 @@
+{
+  "INTERNET_CONNECTION_ERROR": "Tidak ada koneksi internet",
+  "LOCAL_ERROR": "Terjadi kesalahan pada data lokal",
+  "NETWORK_ERROR": "Terjadi kesalahan pada data jaringan",
+  "NO_DATA_ERROR": "Tidak ada data yang tersedia",
+  "UNEXPECTED_ERROR": "Terjadi Kesalahan pada aplikasi"
+}

@@ -1,0 +1,38 @@
+{
+    "error": {
+        "INTERNET_CONNECTION_ERROR": "Tidak ada koneksi internet",
+        "LOCAL_ERROR": "Terjadi kesalahan pada data lokal",
+        "NETWORK_ERROR": "Terjadi kesalahan pada data jaringan",
+        "NO_DATA_ERROR": "Tidak ada data yang tersedia",
+        "UNEXPECTED_ERROR": "Terjadi Kesalahan pada aplikasi"
+    },
+    "label": {
+        "title": "Flutter Demo",
+        "pages": {
+            "home": {
+                "title": "Halaman Utama",
+                "increment": "Tambah",
+                "text": "Kamu telah menekan tombol ini sebanyak:"
+            },
+            "users": {
+                "title": "Daftar User"
+            },
+            "userDetail": {
+                "title": "Detail User"
+            }
+        }
+    },
+    "model": {
+        "user": {
+            "title": "Jabatan",
+            "firstName": "Nama Depan",
+            "lastName": "Nama Belakang",
+            "name": "Nama",
+            "email": "Email",
+            "gender": "Jenis Kelamin",
+            "dateOfBirth": "Tanggal Lahir",
+            "joinFrom": "Tanggal Bergabung",
+            "address": "Alamat"
+        }
+    }
+}

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
 import 'package:{{project_name.snakeCase()}}/core/services/internet_connection.dart';
 import 'package:injectable/injectable.dart';
 
@@ -50,8 +51,8 @@ class HttpClientServiceImpl implements HttpClientService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    await internetConnectionService.checkConnection();
     try {
+      await internetConnectionService.checkConnection();
       final response = await dio.get(
         path,
         queryParameters: queryParameters,
@@ -59,8 +60,10 @@ class HttpClientServiceImpl implements HttpClientService {
       );
 
       return response;
+    } on InternetConnectionException catch (_) {
+      rethrow;
     } on DioError catch (e) {
-      throw (Exception(e));
+      throw (AppException(message: e.toString()));
     }
   }
 
@@ -71,8 +74,8 @@ class HttpClientServiceImpl implements HttpClientService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    await internetConnectionService.checkConnection();
     try {
+      await internetConnectionService.checkConnection();
       final response = await dio.post(
         path,
         data: data,
@@ -81,8 +84,10 @@ class HttpClientServiceImpl implements HttpClientService {
       );
 
       return response;
+    } on InternetConnectionException catch (_) {
+      rethrow;
     } on DioError catch (e) {
-      throw (Exception(e));
+      throw (AppException(message: e.toString()));
     }
   }
 
@@ -93,8 +98,8 @@ class HttpClientServiceImpl implements HttpClientService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    await internetConnectionService.checkConnection();
     try {
+      await internetConnectionService.checkConnection();
       final response = await dio.put(
         path,
         data: data,
@@ -103,8 +108,10 @@ class HttpClientServiceImpl implements HttpClientService {
       );
 
       return response;
+    } on InternetConnectionException catch (_) {
+      rethrow;
     } on DioError catch (e) {
-      throw (Exception(e));
+      throw (AppException(message: e.toString()));
     }
   }
 
@@ -115,8 +122,8 @@ class HttpClientServiceImpl implements HttpClientService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    await internetConnectionService.checkConnection();
     try {
+      await internetConnectionService.checkConnection();
       final response = await dio.patch(
         path,
         data: data,
@@ -125,8 +132,10 @@ class HttpClientServiceImpl implements HttpClientService {
       );
 
       return response;
+    } on InternetConnectionException catch (_) {
+      rethrow;
     } on DioError catch (e) {
-      throw (Exception(e));
+      throw (AppException(message: e.toString()));
     }
   }
 
@@ -137,8 +146,8 @@ class HttpClientServiceImpl implements HttpClientService {
     Map<String, dynamic>? queryParameters,
     Options? options,
   }) async {
-    await internetConnectionService.checkConnection();
     try {
+      await internetConnectionService.checkConnection();
       final response = await dio.delete(
         path,
         data: data,
@@ -147,8 +156,10 @@ class HttpClientServiceImpl implements HttpClientService {
       );
 
       return response;
+    } on InternetConnectionException catch (_) {
+      rethrow;
     } on DioError catch (e) {
-      throw (Exception(e));
+      throw (AppException(message: e.toString()));
     }
   }
 }

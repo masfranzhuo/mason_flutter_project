@@ -1,0 +1,5 @@
+INTERNET_CONNECTION_ERROR: "No internet connection"
+LOCAL_ERROR: "Local data error"
+NETWORK_ERROR: "Network data error"
+NO_DATA_ERROR: "No more data available"
+UNEXPECTED_ERROR: "Unexpected error"

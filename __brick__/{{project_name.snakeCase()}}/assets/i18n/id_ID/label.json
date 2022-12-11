@@ -1,0 +1,16 @@
+{
+  "title": "Flutter Demo",
+  "pages": {
+    "home": {
+      "title": "Halaman Utama",
+      "increment": "Tambah",
+      "text": "Kamu telah menekan tombol ini sebanyak:"
+    },
+    "users": {
+      "title": "Daftar User"
+    },
+    "userDetail": {
+      "title": "Detail User"
+    }
+  }
+}

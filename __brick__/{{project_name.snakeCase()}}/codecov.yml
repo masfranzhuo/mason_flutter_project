@@ -4,4 +4,3 @@ ignore:
   - '**/*.freezed.dart'
   - '**/*.config.dart'
   - '**/*.injectable.dart'
-  - 'lib/core'

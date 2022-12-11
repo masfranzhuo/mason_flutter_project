@@ -1,31 +1,17 @@
-import 'package:intl/intl.dart';
+import 'package:injectable/injectable.dart';
+
+class EnvConfig {
+  static const environment = String.fromEnvironment(
+    'ENV',
+    defaultValue: Environment.dev,
+  );
+}
 
 class PaginationConfig {
   static const limit = 10;
 }
 
-class NumberConfig {
-  static String format(double number, [String locale = 'en_US']) =>
-      NumberFormat('#,##0', locale).format(number);
-
-  static String currencyFormat(
-    double number, [
-    String prefix = '\$',
-    String locale = 'en_US',
-  ]) =>
-      '$prefix${NumberFormat('#,##0', locale).format(number)}';
-}
-
 class DateConfig {
-  static String dateFormat(DateTime date, [String locale = 'en_US']) =>
-      DateFormat('dd MMMM yyyy', locale).format(date.toLocal());
-
-  static String dateTimeFormat(DateTime date, [String locale = 'en_US']) =>
-      DateFormat('dd MMMM yyyy, HH:mm', locale).format(date.toLocal());
-
-  static String dateTimeNameFormat(DateTime date, [String locale = 'en_US']) =>
-      DateFormat('EEEE,dd MMMM yyyy, HH:mm', locale).format(date.toLocal());
-
   static DateTime? dateTimeFromJson(String? date) =>
       date != null && date.isNotEmpty ? DateTime.parse(date).toLocal() : null;
 

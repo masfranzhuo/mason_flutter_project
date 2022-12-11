@@ -1,0 +1,13 @@
+{
+  "user": {
+    "title": "Jabatan",
+    "firstName": "Nama Depan",
+    "lastName": "Nama Belakang",
+    "name": "Nama",
+    "email": "Email",
+    "gender": "Jenis Kelamin",
+    "dateOfBirth": "Tanggal Lahir",
+    "joinFrom": "Tanggal Bergabung",
+    "address": "Alamat"
+  }
+}

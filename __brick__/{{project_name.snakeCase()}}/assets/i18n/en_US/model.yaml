@@ -1,0 +1,10 @@
+user:
+  title: "Title"
+  firstName: "First Name"
+  lastName: "Last Name"
+  name: "Name"
+  email: "Email"
+  gender: "Gender"
+  dateOfBirth: "Date of Birth"
+  joinFrom: "Join From"
+  address: "Address"

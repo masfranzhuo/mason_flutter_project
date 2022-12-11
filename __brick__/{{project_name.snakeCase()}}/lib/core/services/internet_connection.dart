@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
-import 'package:{{project_name.snakeCase()}}/core/utils/failure.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
 import 'package:injectable/injectable.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 
 abstract class InternetConnectionService {
+  Future<void> hasConnection();
   Future<void> checkConnection();
   Future<void> checkConnectivityState();
 }
@@ -13,15 +15,28 @@ abstract class InternetConnectionService {
 @LazySingleton(as: InternetConnectionService)
 class InternetConnectionServiceImpl implements InternetConnectionService {
   @override
+  Future<void> hasConnection() async {
+    try {
+      bool result = await InternetConnectionChecker().hasConnection;
+
+      if (!result) {
+        throw const InternetConnectionException();
+      }
+    } on SocketException catch (e) {
+      throw InternetConnectionException(message: e.message);
+    }
+  }
+
+  @override
   Future<void> checkConnection() async {
     try {
       final response = await InternetAddress.lookup('www.google.com');
 
       if (!response.isNotEmpty) {
-        throw const InternetConnectionFailure();
+        throw const InternetConnectionException();
       }
     } on SocketException catch (e) {
-      throw InternetConnectionFailure(message: e.message);
+      throw InternetConnectionException(message: e.message);
     }
   }
 
@@ -38,10 +53,10 @@ class InternetConnectionServiceImpl implements InternetConnectionService {
         return;
       } else {
         debugPrint('--- Connectivity Result: Not connected to any network');
-        throw const InternetConnectionFailure();
+        throw const InternetConnectionException();
       }
     } on Exception catch (e) {
-      throw InternetConnectionFailure(message: e.toString());
+      throw InternetConnectionException(message: e.toString());
     }
   }
 }

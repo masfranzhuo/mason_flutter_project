@@ -13,6 +13,7 @@ dependencies:
   dartz: ^0.10.1
   device_preview: ^1.1.0
   dio: ^4.0.6
+  easy_localization: ^3.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
@@ -27,6 +28,7 @@ dependencies:
   hive: ^2.2.1
   hive_flutter: ^1.1.0
   injectable: ^1.5.3
+  internet_connection_checker: ^1.0.0+1
   intl: ^0.17.0
   isar: 3.0.0-dev.12
   isar_flutter_libs: 3.0.0-dev.12
@@ -53,5 +55,6 @@ flutter:
   assets:
     - .env_dev
     - .env
-    - assets/flutter_i18n/en_US/
-    - assets/flutter_i18n/id_ID/
+    - assets/i18n/
+    - assets/i18n/en_US/
+    - assets/i18n/id_ID/
