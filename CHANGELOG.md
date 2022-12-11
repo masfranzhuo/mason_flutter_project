@@ -1,3 +1,6 @@
+# 0.2.0+1
+- update: minor fix
+
 # 0.2.0
 - new: refactor architecture
 - new: add easy localization
