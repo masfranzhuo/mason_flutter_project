@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
-import 'package:{{project_name.snakeCase()}}/generated/locale_keys.g.dart';
+import 'package:flutter_project/core/config/base_config.dart';
+import 'package:flutter_project/generated/locale_keys.g.dart';
 import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {

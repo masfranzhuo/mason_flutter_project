@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:{{project_name.snakeCase()}}/core/base/data_source/data_source.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
-import 'package:{{project_name.snakeCase()}}/core/services/sqflite.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:flutter_project/core/base/data_source/data_source.dart';
+import 'package:flutter_project/core/config/general_config.dart';
+import 'package:flutter_project/core/base/exception/exception.dart';
+import 'package:flutter_project/core/services/sqflite.dart';
+import 'package:flutter_project/features/users/models/user.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class UserSqfliteDataSource extends AppDataSource {

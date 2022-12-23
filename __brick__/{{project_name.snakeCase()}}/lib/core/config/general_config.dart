@@ -19,21 +19,3 @@ class DateConfig {
       // ignore: prefer_null_aware_operators
       date != null ? date.toUtc().toIso8601String() : null;
 }
-
-class DatabaseSql {
-  static const createTableUser = '''
-    CREATE TABLE IF NOT EXISTS User (
-      id TEXT PRIMARY KEY,
-      title TEXT NOT NULL,
-      firstName TEXT NOT NULL,
-      lastName TEXT NOT NULL,
-      picture TEXT NOT NULL,
-      gender TEXT,
-      email TEXT,
-      phone TEXT,
-      dateOfBirth TEXT,
-      registerDate TEXT,
-      location TEXT
-    )
-  ''';
-}

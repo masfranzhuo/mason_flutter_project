@@ -1,8 +1,8 @@
-import 'package:{{project_name.snakeCase()}}/core/base/data_source/data_source.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/database/schemas/user_isar.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:flutter_project/core/base/data_source/data_source.dart';
+import 'package:flutter_project/core/config/general_config.dart';
+import 'package:flutter_project/core/base/exception/exception.dart';
+import 'package:flutter_project/features/users/database/schemas/user_isar.dart';
+import 'package:flutter_project/features/users/models/user.dart';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 

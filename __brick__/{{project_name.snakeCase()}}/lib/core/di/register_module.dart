@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/database/schemas/user_isar.dart';
+import 'package:flutter_project/core/config/base_config.dart';
+import 'package:flutter_project/features/users/database/schemas/user_isar.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';

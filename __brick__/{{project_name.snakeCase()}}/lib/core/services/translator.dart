@@ -9,6 +9,11 @@ abstract class TranslatorService {
     final String? fallbackKey,
     final Map<String, String>? translationParams,
   });
+  String plural(
+    final BuildContext context,
+    final String key,
+    final int pluralValue,
+  );
 }
 
 @LazySingleton(as: TranslatorService)
@@ -26,5 +31,10 @@ class TranslatorServiceImpl implements TranslatorService {
       fallbackKey: fallbackKey,
       translationParams: translationParams,
     );
+  }
+
+  @override
+  String plural(BuildContext context, String key, int pluralValue) {
+    return FlutterI18n.plural(context, key, pluralValue);
   }
 }

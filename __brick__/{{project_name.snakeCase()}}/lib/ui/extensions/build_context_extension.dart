@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:{{project_name.snakeCase()}}/core/services/translator.dart';
+import 'package:flutter_project/core/services/translator.dart';
 import 'package:get_it/get_it.dart';
 
 extension BuildContextExtension on BuildContext {

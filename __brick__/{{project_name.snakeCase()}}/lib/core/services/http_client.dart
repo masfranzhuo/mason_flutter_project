@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
-import 'package:{{project_name.snakeCase()}}/core/services/internet_connection.dart';
+import 'package:flutter_project/core/base/exception/exception.dart';
+import 'package:flutter_project/core/services/internet_connection.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class HttpClientService {

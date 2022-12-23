@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:flutter_project/features/users/models/user.dart';
 
 class UserCardWidget extends StatelessWidget {
   final User user;

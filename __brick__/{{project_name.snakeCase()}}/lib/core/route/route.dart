@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/presentation/pages/home_page/home_page.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/presentation/pages/user_detail_page/user_detail_page.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/presentation/pages/users_page/users_page.dart';
+import 'package:flutter_project/features/users/presentation/pages/home_page/home_page.dart';
+import 'package:flutter_project/features/users/presentation/pages/user_detail_page/user_detail_page.dart';
+import 'package:flutter_project/features/users/presentation/pages/users_page/users_page.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoute {

@@ -1,3 +1,7 @@
+# 0.2.1
+- add: secure local storage
+- update: local storage abstract class, plural translation, and internet connection checker
+
 # 0.2.0+1
 - update: minor fix
 

@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
-import 'package:{{project_name.snakeCase()}}/core/base/repository/repository.dart';
-import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/data_sources/user_data_source.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/data_sources/user_local_data_source.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:flutter_project/core/base/exception/exception.dart';
+import 'package:flutter_project/core/base/repository/repository.dart';
+import 'package:flutter_project/core/config/general_config.dart';
+import 'package:flutter_project/features/users/data_sources/user_data_source.dart';
+import 'package:flutter_project/features/users/data_sources/user_local_data_source.dart';
+import 'package:flutter_project/features/users/models/user.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class UserRepository extends AppRepository {

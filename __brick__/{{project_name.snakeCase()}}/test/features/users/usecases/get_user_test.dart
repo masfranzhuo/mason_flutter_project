@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:{{project_name.snakeCase()}}/features/users/usecases/get_user.dart';
+import 'package:flutter_project/features/users/usecases/get_user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
