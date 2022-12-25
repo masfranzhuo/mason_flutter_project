@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_project/core/base/exception/exception.dart';
-import 'package:flutter_project/core/base/repository/repository.dart';
-import 'package:flutter_project/core/config/general_config.dart';
-import 'package:flutter_project/features/users/data_sources/user_data_source.dart';
-import 'package:flutter_project/features/users/data_sources/user_local_data_source.dart';
-import 'package:flutter_project/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/repository/repository.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/data_sources/user_network_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/data_sources/user_local_data_source.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
 import 'package:injectable/injectable.dart';
 
-abstract class UserRepository extends AppRepository {
+abstract class UserRepository extends BaseRepository {
   Future<Either<AppException, List<User>>> getUsers({
     required int page,
     int limit = PaginationConfig.limit,
@@ -17,14 +17,12 @@ abstract class UserRepository extends AppRepository {
 
 @LazySingleton(as: UserRepository)
 class UserRepositoryImpl implements UserRepository {
-  final UserDataSource dataSource;
+  final UserNetworkDataSource networkDataSource;
   final UserLocalDataSource localDataSource;
-  // final UserSqfliteDataSource sqfliteDataSource;
 
   UserRepositoryImpl({
-    required this.dataSource,
+    required this.networkDataSource,
     required this.localDataSource,
-    // required this.sqfliteDataSource,
   });
 
   @override
@@ -33,9 +31,8 @@ class UserRepositoryImpl implements UserRepository {
     int limit = PaginationConfig.limit,
   }) async {
     try {
-      final result = await dataSource.getUsers(page: page, limit: limit);
-      await localDataSource.setUsers(users: result);
-      // await sqfliteDataSource.setUsers(users: result);\
+      final result = await networkDataSource.getUsers(page: page, limit: limit);
+      await localDataSource.addUsers(users: result);
 
       return Right(result);
     } on InternetConnectionException catch (e) {
@@ -48,10 +45,6 @@ class UserRepositoryImpl implements UserRepository {
         page: page + 1,
         limit: limit,
       );
-      // final result = await sqfliteDataSource.getUsers(
-      //   page: page + 1,
-      //   limit: limit,
-      // );
       if (result.isNotEmpty) {
         return Right(result);
       }
@@ -67,8 +60,8 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<Either<AppException, User>> getUser({required String id}) async {
     try {
-      final result = await dataSource.getUser(id: id);
-      await localDataSource.setUser(user: result);
+      final result = await networkDataSource.getUser(id: id);
+      await localDataSource.addUser(user: result);
 
       return Right(result);
     } on InternetConnectionException catch (e) {

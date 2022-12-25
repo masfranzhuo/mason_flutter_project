@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_project/core/base/exception/exception.dart';
-import 'package:flutter_project/features/users/usecases/get_users.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/usecases/get_users.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 

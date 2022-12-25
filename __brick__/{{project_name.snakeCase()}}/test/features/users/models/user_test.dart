@@ -1,4 +1,4 @@
-import 'package:flutter_project/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../../../helpers/model_helpers.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_project/core/base/model/model.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/model/model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'location.freezed.dart';

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_project/core/base/exception/exception.dart';
-import 'package:flutter_project/features/users/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:mockito/mockito.dart';

@@ -7,6 +7,8 @@ abstract class BaseConfig {
   String get baseUrl;
 }
 
+/// internal example implementation
+///
 @Injectable(as: BaseConfig, env: [Environment.dev])
 class DevConfig implements BaseConfig {
   @override

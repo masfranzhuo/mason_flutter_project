@@ -1,4 +1,4 @@
-name: flutter_project
+name: {{project_name.snakeCase()}}
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -7,48 +7,52 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.17.0 <3.0.0"
 
+isar_version: &isar_version 3.0.5
+
 dependencies:
-  connectivity_plus: ^2.3.6+1
-  cupertino_icons: ^1.0.2
+  connectivity_plus: ^3.0.2
+  cupertino_icons: ^1.0.5
   dartz: ^0.10.1
   device_preview: ^1.1.0
   dio: ^4.0.6
+  drift: ^2.1.0
   easy_localization: ^3.0.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.1
   flutter_dotenv: ^5.0.2
-  flutter_i18n: ^0.32.2
+  flutter_i18n: ^0.32.4
   flutter_localizations:
     sdk: flutter
-  flutter_screenutil: ^5.5.3+2
-  flutter_secure_storage: ^7.0.1
-  freezed_annotation: ^2.0.0
+  flutter_screenutil: ^5.6.0
+  flutter_secure_storage: ^6.1.0
+  freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  go_router: ^4.3.0
-  hive: ^2.2.1
+  go_router: ^6.0.0
+  hive: ^2.2.3
   hive_flutter: ^1.1.0
-  injectable: ^1.5.3
+  injectable: ^2.1.0
   internet_connection_checker: ^1.0.0+1
   intl: ^0.17.0
-  isar: 3.0.0-dev.12
-  isar_flutter_libs: 3.0.0-dev.12
-  json_annotation: ^4.6.0
-  path: ^1.8.0
+  isar: 3.0.5
+  isar_flutter_libs: 3.0.5
+  json_annotation: ^4.7.0
+  path: ^1.8.2
   path_provider: ^2.0.11
-  sqflite: ^2.0.3
+  sqlite3_flutter_libs: ^0.5.12
 
 dev_dependencies:
   bloc_test: ^9.1.0
-  build_runner: ^2.2.0
+  build_runner: ^2.3.0
+  drift_dev: ^2.1.0
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
-  freezed: ^2.0.0
-  injectable_generator: ^1.5.3
-  isar_generator: 3.0.0-dev.12
-  json_serializable: ^6.3.1
-  mockito: ^5.2.0
+  freezed: ^2.2.0
+  injectable_generator: ^2.1.3
+  isar_generator: *isar_version
+  json_serializable: ^6.5.4
+  mockito: ^5.3.2
   mocktail: ^0.3.0
 
 flutter:

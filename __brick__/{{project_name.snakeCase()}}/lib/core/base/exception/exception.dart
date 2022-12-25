@@ -5,6 +5,8 @@ abstract class BaseException implements Exception {
   const BaseException({required this.code, this.message = ''});
 }
 
+/// default app exception
+///
 class AppException extends BaseException {
   const AppException({
     String code = 'UNEXPECTED_ERROR',
@@ -12,6 +14,7 @@ class AppException extends BaseException {
   }) : super(code: code);
 }
 
+/// internet connection exception
 class InternetConnectionException extends AppException {
   const InternetConnectionException({
     String code = 'INTERNET_CONNECTION_ERROR',
@@ -19,6 +22,8 @@ class InternetConnectionException extends AppException {
   }) : super(code: code);
 }
 
+/// network data source exception
+///
 class NetworkException extends AppException {
   const NetworkException({
     String code = 'NETWORK_ERROR',
@@ -26,6 +31,8 @@ class NetworkException extends AppException {
   }) : super(code: code);
 }
 
+/// local data source exception
+///
 class LocalException extends AppException {
   const LocalException({
     String code = 'LOCAL_ERROR',
@@ -33,6 +40,8 @@ class LocalException extends AppException {
   }) : super(code: code);
 }
 
+/// form exception
+///
 class FormFieldException extends AppException {
   const FormFieldException({
     required String type,

@@ -1,1 +1,1 @@
-abstract class AppDataSource {}
+abstract class BaseDataSource {}

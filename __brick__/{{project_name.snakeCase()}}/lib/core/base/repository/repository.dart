@@ -1,1 +1,1 @@
-abstract class AppRepository {}
+abstract class BaseRepository {}

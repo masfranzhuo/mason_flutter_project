@@ -1,13 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_project/core/base/usecase/usecase.dart';
-import 'package:flutter_project/core/config/general_config.dart';
-import 'package:flutter_project/core/base/exception/exception.dart';
-import 'package:flutter_project/features/users/models/user.dart';
-import 'package:flutter_project/features/users/repositories/user_repository.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/usecase/usecase.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/repositories/user_repository.dart';
 import 'package:injectable/injectable.dart';
 
 @lazySingleton
-class GetUsers extends AppUsecase<List<User>, GetUsersParams> {
+class GetUsers extends BaseUsecase<List<User>, GetUsersParams> {
   final UserRepository repository;
 
   GetUsers({required this.repository});

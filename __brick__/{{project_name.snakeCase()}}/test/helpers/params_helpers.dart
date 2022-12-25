@@ -1,4 +1,4 @@
-import 'package:flutter_project/features/users/usecases/get_users.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/usecases/get_users.dart';
 
 /// Usecases
 ///

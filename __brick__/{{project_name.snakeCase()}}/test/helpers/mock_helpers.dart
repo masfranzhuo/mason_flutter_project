@@ -1,9 +1,9 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/config/base_config.dart';
-import 'package:flutter_project/core/services/translator.dart';
-import 'package:flutter_project/features/users/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
-import 'package:flutter_project/features/users/state_managers/users_page_cubit/users_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/internal_services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/state_managers/user_detail_page_cubit/user_detail_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/state_managers/users_page_cubit/users_page_cubit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
 

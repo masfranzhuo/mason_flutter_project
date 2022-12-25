@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/core/base/exception/exception.dart';
-import 'package:flutter_project/features/users/models/user.dart';
-import 'package:flutter_project/features/users/usecases/get_user.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/exception/exception.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/usecases/get_user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 

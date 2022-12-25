@@ -1,5 +1,5 @@
-import 'package:flutter_project/features/users/database/schemas/location_isar.dart';
-import 'package:flutter_project/features/users/database/schemas/user_isar.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/database/schemas/location_isar.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/database/schemas/user_isar.dart';
 
 import 'model_helpers.dart';
 

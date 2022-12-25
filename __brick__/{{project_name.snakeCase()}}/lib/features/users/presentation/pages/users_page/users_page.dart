@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_project/features/users/presentation/widgets/user_card_widget.dart';
-import 'package:flutter_project/features/users/state_managers/users_page_cubit/users_page_cubit.dart';
-import 'package:flutter_project/generated/locale_keys.g.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/presentation/widgets/user_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/state_managers/users_page_cubit/users_page_cubit.dart';
+import 'package:{{project_name.snakeCase()}}/generated/locale_keys.g.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 

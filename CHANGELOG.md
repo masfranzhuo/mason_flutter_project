@@ -1,3 +1,7 @@
+# 0.2.2
+- add: drfit local storage
+- update: refactor services
+
 # 0.2.1
 - add: secure local storage
 - update: local storage abstract class, plural translation, and internet connection checker

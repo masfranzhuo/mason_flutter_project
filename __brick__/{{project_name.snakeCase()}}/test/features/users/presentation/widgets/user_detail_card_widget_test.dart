@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/extensions/date_time_extension.dart';
-import 'package:flutter_project/features/users/presentation/widgets/user_detail_card_widget.dart';
+import 'package:{{project_name.snakeCase()}}/core/extensions/date_time_extension.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/presentation/widgets/user_detail_card_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';

@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/config/base_config.dart';
-import 'package:flutter_project/core/route/route.dart';
-import 'package:flutter_project/ui/theme/theme.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/route/route.dart';
+import 'package:{{project_name.snakeCase()}}/ui/theme/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 

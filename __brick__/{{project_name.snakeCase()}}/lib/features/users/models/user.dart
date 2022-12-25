@@ -1,6 +1,6 @@
-import 'package:flutter_project/core/config/general_config.dart';
-import 'package:flutter_project/core/base/model/model.dart';
-import 'package:flutter_project/features/users/models/location.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/base/model/model.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/location.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user.freezed.dart';

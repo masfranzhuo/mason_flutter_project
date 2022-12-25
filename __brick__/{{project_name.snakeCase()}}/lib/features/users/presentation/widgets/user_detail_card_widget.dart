@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/extensions/date_time_extension.dart';
-import 'package:flutter_project/features/users/models/user.dart';
-import 'package:flutter_project/generated/locale_keys.g.dart';
+import 'package:{{project_name.snakeCase()}}/core/extensions/date_time_extension.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/generated/locale_keys.g.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UserDetailCardWidget extends StatelessWidget {

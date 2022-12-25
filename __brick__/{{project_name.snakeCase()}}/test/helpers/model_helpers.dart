@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:flutter_project/core/config/general_config.dart';
-import 'package:flutter_project/features/users/models/location.dart';
-import 'package:flutter_project/features/users/models/user.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/general_config.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/location.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/models/user.dart';
 
 import '../fixtures/fixtures_reader.dart';
 

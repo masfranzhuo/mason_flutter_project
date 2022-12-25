@@ -6,9 +6,9 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
-import 'package:flutter_project/core/config/base_config.dart';
-import 'package:flutter_project/core/services/translator.dart';
-import 'package:flutter_project/features/users/presentation/pages/home_page/home_page.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/core/internal_services/translator.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/presentation/pages/home_page/home_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_it/get_it.dart';
 

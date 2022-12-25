@@ -1,18 +1,14 @@
-import 'package:dio/dio.dart';
-import 'package:flutter_project/core/config/base_config.dart';
-import 'package:flutter_project/features/users/database/schemas/user_isar.dart';
+import 'package:{{project_name.snakeCase()}}/core/config/base_config.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/database/database.dart';
+import 'package:{{project_name.snakeCase()}}/features/users/database/schemas/user_isar.dart';
 import 'package:get_it/get_it.dart';
-import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
 @module
 abstract class RegisterModule {
-  Dio dio() => Dio(BaseOptions(baseUrl: GetIt.I<BaseConfig>().baseUrl));
-
-  @preResolve
-  Future<Box<dynamic>> get hive async => Hive.box('box');
+  String get baseUrl => GetIt.I<BaseConfig>().baseUrl;
 
   @preResolve
   Future<Isar> get isar async => await Isar.open(
@@ -21,14 +17,7 @@ abstract class RegisterModule {
         name: GetIt.I<BaseConfig>().appName,
       );
 
-  /// sqflite only works for mobile device currently
+  /// Drift local storage
   ///
-  // @preResolve
-  // Future<Database> get database async => await openDatabase(
-  //       join(await getDatabasesPath(), 'database.db'),
-  //       version: 1,
-  //       onCreate: (Database database, int version) async {
-  //         await database.execute(DatabaseSql.createTableUser);
-  //       },
-  //     );
+  Database get database => Database();
 }
